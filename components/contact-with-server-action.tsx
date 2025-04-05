@@ -9,56 +9,56 @@ import { Textarea } from "@/components/ui/textarea"
 import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/hooks/use-toast"
-import { sendEmail } from "@/app/actions/send-email"
+// import { sendEmail } from "@/app/actions/send-email"
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
   const formRef = useRef<HTMLFormElement>(null)
 
-  async function handleSubmit(formData: FormData) {
-    setIsSubmitting(true)
+  // async function handleSubmit(formData: FormData) {
+  //   setIsSubmitting(true)
 
-    try {
-      const result = await sendEmail(formData)
+  //   try {
+  //     const result = await sendEmail(formData)
 
-      if (result.success) {
-        toast({
-          title: "Message sent!",
-          description: "Thank you for your message. I'll get back to you soon.",
-          variant: "default",
-        })
+  //     if (result.success) {
+  //       toast({
+  //         title: "Message sent!",
+  //         description: "Thank you for your message. I'll get back to you soon.",
+  //         variant: "default",
+  //       })
 
-        // Reset form
-        formRef.current?.reset()
-      } else {
-        toast({
-          title: "Message failed to send",
-          description: result.error || "There was an error sending your message. Please try again later.",
-          variant: "destructive",
-        })
-      }
-    } catch (error) {
-      console.error("Form submission error:", error)
-      toast({
-        title: "Message failed to send",
-        description: "There was an error sending your message. Please try again later.",
-        variant: "destructive",
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
+  //       // Reset form
+  //       formRef.current?.reset()
+  //     } else {
+  //       toast({
+  //         title: "Message failed to send",
+  //         description: result.error || "There was an error sending your message. Please try again later.",
+  //         variant: "destructive",
+  //       })
+  //     }
+  //   } catch (error) {
+  //     console.error("Form submission error:", error)
+  //     toast({
+  //       title: "Message failed to send",
+  //       description: "There was an error sending your message. Please try again later.",
+  //       variant: "destructive",
+  //     })
+  //   } finally {
+  //     setIsSubmitting(false)
+  //   }
+  // }
 
   return (
     <section id="contact" className="py-16 md:py-24 bg-muted/50">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center max-w-3xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          initial={ { opacity: 0, y: 20 } }
+          whileInView={ { opacity: 1, y: 0 } }
+          viewport={ { once: true } }
+          transition={ { duration: 0.5 } }
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">Get In Touch</h2>
           <p className="text-lg text-muted-foreground">
@@ -70,15 +70,15 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <motion.div
             className="lg:col-span-2"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            initial={ { opacity: 0, x: -20 } }
+            whileInView={ { opacity: 1, x: 0 } }
+            viewport={ { once: true } }
+            transition={ { duration: 0.5 } }
           >
             <Card>
               <CardContent className="p-6">
                 <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
-                <form ref={formRef} action={handleSubmit} className="space-y-4">
+                <form ref={ formRef } className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium">
@@ -107,12 +107,12 @@ export default function Contact() {
                       id="message"
                       name="message"
                       placeholder="Tell me about your project..."
-                      rows={5}
+                      rows={ 5 }
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? (
+                  <Button type="submit" className="w-full" disabled={ isSubmitting }>
+                    { isSubmitting ? (
                       <span className="flex items-center">
                         <svg
                           className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
@@ -140,7 +140,7 @@ export default function Contact() {
                       <span className="flex items-center">
                         <Send className="mr-2 h-4 w-4" /> Send Message
                       </span>
-                    )}
+                    ) }
                   </Button>
                 </form>
               </CardContent>
@@ -148,10 +148,10 @@ export default function Contact() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            initial={ { opacity: 0, x: 20 } }
+            whileInView={ { opacity: 1, x: 0 } }
+            viewport={ { once: true } }
+            transition={ { duration: 0.5 } }
           >
             <Card className="h-full">
               <CardContent className="p-6 flex flex-col h-full">

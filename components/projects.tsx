@@ -132,7 +132,6 @@ export default function Projects() {
   )
 }
 
-// Update the ProjectCard component to ensure images display properly
 function ProjectCard({ project, index }: { project: any; index: number }) {
   return (
     <motion.div
@@ -162,15 +161,10 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
             ))}
           </div>
         </CardContent>
-        <CardFooter className="p-6 pt-0 flex justify-between">
+        <CardFooter className="p-6 pt-0 flex justify-center">
           <Button asChild variant="outline" size="sm">
             <Link href={project.github} target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2 h-4 w-4" /> Code
-            </Link>
-          </Button>
-          <Button asChild size="sm">
-            <Link href={project.demo} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
+              <Github className="mr-2 h-4 w-4" /> View Code
             </Link>
           </Button>
         </CardFooter>

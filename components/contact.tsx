@@ -9,46 +9,11 @@ import { Textarea } from "@/components/ui/textarea"
 import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react"
 import Link from "next/link"
 import { useToast } from "@/hooks/use-toast"
-// import { sendEmail } from "@/app/actions/send-email"
 
 export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { toast } = useToast()
   const formRef = useRef<HTMLFormElement>(null)
-
-  // async function handleSubmit(formData: FormData) {
-  //   setIsSubmitting(true)
-
-  //   try {
-  //     const result = await sendEmail(formData)
-
-  //     if (result.success) {
-  //       toast({
-  //         title: "Message sent!",
-  //         description: "Thank you for your message. I'll get back to you soon.",
-  //         variant: "default",
-  //       })
-
-  //       // Reset form
-  //       formRef.current?.reset()
-  //     } else {
-  //       toast({
-  //         title: "Message failed to send",
-  //         description: result.error || "There was an error sending your message. Please try again later.",
-  //         variant: "destructive",
-  //       })
-  //     }
-  //   } catch (error) {
-  //     console.error("Form submission error:", error)
-  //     toast({
-  //       title: "Message failed to send",
-  //       description: "There was an error sending your message. Please try again later.",
-  //       variant: "destructive",
-  //     })
-  //   } finally {
-  //     setIsSubmitting(false)
-  //   }
-  // }
 
   return (
     <section id="contact" className="py-16 md:py-24 bg-muted/50">
@@ -176,19 +141,7 @@ export default function Contact() {
                       </a>
                     </div>
                   </div>
-                  <div className="flex items-start">
-                    <Phone className="h-5 w-5 text-primary mr-3 mt-0.5" />
-                    <div>
-                      <h4 className="font-medium">Phone</h4>
-                      <a
-                        href="tel:+919004403780"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        +91 9004403780
-                      </a>
-                    </div>
                   </div>
-                </div>
 
                 <div className="mt-8">
                   <h4 className="font-medium mb-4">Connect With Me</h4>

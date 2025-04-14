@@ -15,7 +15,6 @@ export default function ResumeView() {
         </div>
         <div className="space-y-1 text-sm">
           <p>Email: sufyankamil@hotmail.com</p>
-          <p>Phone: +91-9004403780</p>
           <p>Location: Mumbai, India</p>
         </div>
       </div>

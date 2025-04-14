@@ -45,16 +45,40 @@ const skills = [
   },
 ]
 
-// Update the technologies array with the user's actual technologies
+// Update the technologies array with reliable technology logo URLs
 const technologies = [
-  { name: "Flutter", icon: "/placeholder.svg?height=80&width=80" },
-  { name: "Dart", icon: "/placeholder.svg?height=80&width=80" },
-  { name: "React", icon: "/placeholder.svg?height=80&width=80" },
-  { name: "Node.js", icon: "/placeholder.svg?height=80&width=80" },
-  { name: "Firebase", icon: "/placeholder.svg?height=80&width=80" },
-  { name: "MySQL", icon: "/placeholder.svg?height=80&width=80" },
-  { name: "MongoDB", icon: "/placeholder.svg?height=80&width=80" },
-  { name: "Git", icon: "/placeholder.svg?height=80&width=80" },
+  {
+    name: "Flutter",
+    icon: "https://cdn.prod.website-files.com/5ee12d8d7f840543bde883de/5ef3a1148ac97166a06253c1_flutter-logo-white-inset.svg",
+  },
+  {
+    name: "Dart",
+    icon: "https://dart-code.gallerycdn.vsassets.io/extensions/dart-code/dart-code/3.109.20250404/1743679141664/Microsoft.VisualStudio.Services.Icons.Default",
+  },
+  {
+    name: "React",
+    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png",
+  },
+  {
+    name: "Node.js",
+    icon: "https://miro.medium.com/v2/resize:fit:866/1*1UBNwRFaslvqt_G3Njw3pg.jpeg",
+  },
+  {
+    name: "Firebase",
+    icon: "https://firebase.google.com/static/downloads/brand-guidelines/PNG/logo-logomark.png",
+  },
+  {
+    name: "MySQL",
+    icon: "https://www.mysql.com/common/logos/logo-mysql-170x115.png",
+  },
+  {
+    name: "MongoDB",
+    icon: "https://w7.pngwing.com/pngs/115/190/png-transparent-mongodb-original-logo-icon-thumbnail.png",
+  },
+  {
+    name: "Git",
+    icon: "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
+  },
 ]
 
 export default function Skills() {
@@ -113,7 +137,7 @@ export default function Skills() {
           <h3 className="text-2xl font-bold mb-8">Technologies I Work With</h3>
         </motion.div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-8">
           {technologies.map((tech, index) => (
             <motion.div
               key={tech.name}
@@ -123,14 +147,16 @@ export default function Skills() {
               transition={{ duration: 0.3, delay: index * 0.05 }}
               className="flex flex-col items-center"
             >
-              <div className="bg-card p-4 rounded-full shadow-md mb-3 w-20 h-20 flex items-center justify-center">
-                <Image
-                  src={tech.icon || "/placeholder.svg"}
-                  alt={tech.name}
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                />
+              <div className="bg-card p-2 rounded-full shadow-md mb-3 w-24 h-24 flex items-center justify-center overflow-hidden">
+                <div className="relative w-full h-full rounded-full overflow-hidden">
+                  <Image
+                    src={tech.icon || "/placeholder.svg"}
+                    alt={tech.name}
+                    fill
+                    className="object-contain p-2"
+                    unoptimized={true} // This helps with external URLs
+                  />
+                </div>
               </div>
               <span className="text-sm font-medium">{tech.name}</span>
             </motion.div>
@@ -140,4 +166,3 @@ export default function Skills() {
     </section>
   )
 }
-

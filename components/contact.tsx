@@ -134,10 +134,10 @@ export default function Contact() {
                     <div>
                       <h4 className="font-medium">Email</h4>
                       <a
-                        href="mailto:sufyankamil@hotmail.com"
+                        href="mailto:info@sufyankamil.com"
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        sufyankamil@hotmail.com
+                        info@sufyankamil.com
                       </a>
                     </div>
                   </div>
@@ -165,7 +165,7 @@ export default function Contact() {
                       <span className="sr-only">LinkedIn</span>
                     </Link>
                     <a
-                      href="mailto:sufyankamil@hotmail.com"
+                      href="mailto:info@sufyankamil.com"
                       className="bg-card hover:bg-muted p-3 rounded-full transition-colors"
                     >
                       <Mail className="h-5 w-5" />

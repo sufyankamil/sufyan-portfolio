@@ -81,7 +81,7 @@ export default function Hero() {
                   <span className="sr-only">LinkedIn</span>
                 </Link>
                 <a
-                  href="mailto:sufyankamil@hotmail.com"
+                  href="mailto:info@sufyankamil.com"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail className="h-6 w-6" />

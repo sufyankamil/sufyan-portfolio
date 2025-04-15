@@ -14,7 +14,7 @@ export default function ResumeView() {
           <p className="text-muted-foreground">Flutter Developer</p>
         </div>
         <div className="space-y-1 text-sm">
-          <p>Email: sufyankamil@hotmail.com</p>
+          <p>Email: info@sufyankamil.com</p>
           <p>Location: Mumbai, India</p>
         </div>
       </div>

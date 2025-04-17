@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Briefcase, Award, Calendar } from "lucide-react"
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Briefcase, Award, Calendar } from "lucide-react";
 
-// Replace the experiences array with the user's actual work experience
 const experiences = [
   {
     title: "Flutter Developer",
@@ -34,37 +33,39 @@ const experiences = [
       "Led testing & CI/CD efforts, cutting defects by 50%",
     ],
   },
-]
+];
 
-// Replace the certifications array with the user's actual certifications
 const certifications = [
   {
     title: "Flutter Certified Application Developer",
     issuer: "Android ATC",
     date: "2022",
-    description: "Professional certification for Flutter development skills and best practices.",
+    description:
+      "Professional certification for Flutter development skills and best practices.",
   },
   {
     title: "National Level Project Competition",
     issuer: "ISTE",
     date: "2021",
-    description: "Recognition for outstanding project work at the national level.",
+    description:
+      "Recognition for outstanding project work at the national level.",
   },
   {
     title: "Cisco NetAcad",
     issuer: "ISTE National Level Codathon",
     date: "2021",
-    description: "Participation and recognition in national level coding competition.",
+    description:
+      "Participation and recognition in national level coding competition.",
   },
   {
     title: "Research Publication",
     issuer: "IRJET Journal",
     date: "Dec 2020",
-    description: "Published research on Palm Vein Technology, highlighting advancements in biometric authentication.",
+    description:
+      "Published research on Palm Vein Technology, highlighting advancements in biometric authentication.",
   },
-]
+];
 
-// Add the education section to the component
 export default function Experience() {
   return (
     <section id="experience" className="py-16 md:py-24">
@@ -76,9 +77,12 @@ export default function Experience() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">Experience & Education</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">
+            Experience & Education
+          </h2>
           <p className="text-lg text-muted-foreground">
-            My professional journey, education, and credentials in Flutter development and related technologies.
+            My professional journey, education, and credentials in Flutter
+            development and related technologies.
           </p>
         </motion.div>
 
@@ -106,10 +110,16 @@ export default function Experience() {
                           <Calendar className="mr-1 h-3 w-3" /> {exp.period}
                         </Badge>
                       </div>
-                      <p className="text-primary font-medium mb-4">{exp.company}</p>
-                      <p className="text-muted-foreground mb-4">{exp.description}</p>
+                      <p className="text-primary font-medium mb-4">
+                        {exp.company}
+                      </p>
+                      <p className="text-muted-foreground mb-4">
+                        {exp.description}
+                      </p>
                       <div className="space-y-2">
-                        <p className="font-medium">Key Responsibilities & Achievements:</p>
+                        <p className="font-medium">
+                          Key Responsibilities & Achievements:
+                        </p>
                         <ul className="list-disc list-inside text-muted-foreground space-y-1">
                           {exp.achievements.map((achievement, i) => (
                             <li key={i}>{achievement}</li>
@@ -136,12 +146,16 @@ export default function Experience() {
                 <div className="absolute top-0 left-0 w-1 h-full bg-primary"></div>
                 <CardContent className="p-6">
                   <div className="flex flex-wrap justify-between items-start mb-2">
-                    <h4 className="text-xl font-bold">B.E. in Computer Engineering</h4>
+                    <h4 className="text-xl font-bold">
+                      B.E. in Computer Engineering
+                    </h4>
                     <Badge variant="outline" className="flex items-center">
                       <Calendar className="mr-1 h-3 w-3" /> 2019-2022
                     </Badge>
                   </div>
-                  <p className="text-primary font-medium mb-2">Saraswati College of Engineering, Navi Mumbai</p>
+                  <p className="text-primary font-medium mb-2">
+                    Saraswati College of Engineering, Navi Mumbai
+                  </p>
                   <p className="text-muted-foreground">CGPA - 8.3</p>
                 </CardContent>
               </Card>
@@ -169,7 +183,9 @@ export default function Experience() {
                         <Badge variant="outline">{cert.date}</Badge>
                       </div>
                       <p className="text-primary text-sm mb-2">{cert.issuer}</p>
-                      <p className="text-muted-foreground text-sm">{cert.description}</p>
+                      <p className="text-muted-foreground text-sm">
+                        {cert.description}
+                      </p>
                     </CardContent>
                   </Card>
                 </motion.div>
@@ -191,8 +207,9 @@ export default function Experience() {
                   <h4 className="font-bold mb-2">Top Performer Recognition</h4>
                   <p className="text-primary text-sm mb-2">Internship Studio</p>
                   <p className="text-muted-foreground text-sm">
-                    Recognized as a Top Performer during the Internship at Internship Studio for outstanding
-                    contributions in web development and improving user engagement by 15%
+                    Recognized as a Top Performer during the Internship at
+                    Internship Studio for outstanding contributions in web
+                    development and improving user engagement by 15%
                   </p>
                 </CardContent>
               </Card>
@@ -201,6 +218,5 @@ export default function Experience() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

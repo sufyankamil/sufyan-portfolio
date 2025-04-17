@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Github, Linkedin, Mail } from "lucide-react"
+import Link from "next/link";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -10,7 +10,9 @@ export default function Footer() {
             <Link href="#home" className="text-2xl font-bold text-primary">
               Flutter<span className="text-accent">Dev</span>
             </Link>
-            <p className="text-muted-foreground mt-2 text-sm">Building beautiful mobile experiences with Flutter</p>
+            <p className="text-muted-foreground mt-2 text-sm">
+              Building beautiful mobile experiences with Flutter
+            </p>
           </div>
 
           <div className="flex flex-col items-center md:items-end">
@@ -48,6 +50,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-

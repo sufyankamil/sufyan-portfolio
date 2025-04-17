@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Briefcase, GraduationCap, Award, Code } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Briefcase, GraduationCap, Award, Code } from "lucide-react";
 
 export default function ResumeView() {
   return (
@@ -30,16 +30,30 @@ export default function ResumeView() {
             <div className="flex flex-col md:flex-row justify-between mb-2">
               <div>
                 <h4 className="font-bold">Flutter Developer</h4>
-                <p className="text-primary">Lauren Information Technologies Pvt. Ltd.</p>
+                <p className="text-primary">
+                  Lauren Information Technologies Pvt. Ltd.
+                </p>
               </div>
               <Badge variant="outline">July 2023 - Present</Badge>
             </div>
             <ul className="list-disc list-inside space-y-1 mt-3 text-muted-foreground">
-              <li>Developed cross-platform mobile apps using Flutter & Dart, ensuring high performance.</li>
-              <li>Designed responsive UI/UX and integrated Firebase for real-time updates.</li>
-              <li>Implemented secure authentication & role-based access control.</li>
-              <li>Optimized app security and API integrations using Node.js.</li>
-              <li>Streamlined development with Flutterflow and Agile practices.</li>
+              <li>
+                Developed cross-platform mobile apps using Flutter & Dart,
+                ensuring high performance.
+              </li>
+              <li>
+                Designed responsive UI/UX and integrated Firebase for real-time
+                updates.
+              </li>
+              <li>
+                Implemented secure authentication & role-based access control.
+              </li>
+              <li>
+                Optimized app security and API integrations using Node.js.
+              </li>
+              <li>
+                Streamlined development with Flutterflow and Agile practices.
+              </li>
             </ul>
           </CardContent>
         </Card>
@@ -54,9 +68,15 @@ export default function ResumeView() {
               <Badge variant="outline">Jan 2022 - Apr 2023</Badge>
             </div>
             <ul className="list-disc list-inside space-y-1 mt-3 text-muted-foreground">
-              <li>Built full-stack web & mobile applications using Flutter, React, and Node.js.</li>
+              <li>
+                Built full-stack web & mobile applications using Flutter, React,
+                and Node.js.
+              </li>
               <li>Developed RESTful APIs, reducing integration time by 30%.</li>
-              <li>Improved app performance & security, reducing crash rates by 15%.</li>
+              <li>
+                Improved app performance & security, reducing crash rates by
+                15%.
+              </li>
               <li>Led testing & CI/CD efforts, cutting defects by 50%.</li>
             </ul>
           </CardContent>
@@ -74,7 +94,9 @@ export default function ResumeView() {
             <div className="flex flex-col md:flex-row justify-between mb-2">
               <div>
                 <h4 className="font-bold">B.E. in Computer Engineering</h4>
-                <p className="text-primary">Saraswati College of Engineering, Navi Mumbai</p>
+                <p className="text-primary">
+                  Saraswati College of Engineering, Navi Mumbai
+                </p>
               </div>
               <Badge variant="outline">2019 - 2022</Badge>
             </div>
@@ -144,7 +166,8 @@ export default function ResumeView() {
       {/* Certifications & Achievements */}
       <div>
         <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-          <Award className="h-5 w-5 text-primary" /> Certifications & Achievements
+          <Award className="h-5 w-5 text-primary" /> Certifications &
+          Achievements
         </h3>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -164,12 +187,14 @@ export default function ResumeView() {
               <h4 className="font-bold mb-2">Achievements</h4>
               <ul className="list-disc list-inside space-y-1 text-muted-foreground">
                 <li>
-                  Recognized as a Top Performer during the Internship at Internship Studio for outstanding contributions
-                  in web development and improving user engagement by 15%
+                  Recognized as a Top Performer during the Internship at
+                  Internship Studio for outstanding contributions in web
+                  development and improving user engagement by 15%
                 </li>
                 <li>
-                  Published research on Palm Vein Technology in IRJET Journal (Dec 2020), highlighting advancements in
-                  biometric authentication and secure personal identification systems
+                  Published research on Palm Vein Technology in IRJET Journal
+                  (Dec 2020), highlighting advancements in biometric
+                  authentication and secure personal identification systems
                 </li>
               </ul>
             </CardContent>
@@ -177,6 +202,5 @@ export default function ResumeView() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-

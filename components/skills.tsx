@@ -1,11 +1,10 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import Image from "next/image"
+import { motion } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import Image from "next/image";
 
-// Update the skills array with the user's actual skills
 const skills = [
   {
     category: "Programming Languages",
@@ -43,9 +42,8 @@ const skills = [
       { name: "Agile", level: 85 },
     ],
   },
-]
+];
 
-// Update the technologies array with reliable technology logo URLs
 const technologies = [
   {
     name: "Flutter",
@@ -79,7 +77,7 @@ const technologies = [
     name: "Git",
     icon: "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
   },
-]
+];
 
 export default function Skills() {
   return (
@@ -92,9 +90,12 @@ export default function Skills() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">Skills & Expertise</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">
+            Skills & Expertise
+          </h2>
           <p className="text-lg text-muted-foreground">
-            My technical skills and proficiency in various technologies related to Flutter development.
+            My technical skills and proficiency in various technologies related
+            to Flutter development.
           </p>
         </motion.div>
 
@@ -109,13 +110,17 @@ export default function Skills() {
             >
               <Card className="h-full">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-6">{skillGroup.category}</h3>
+                  <h3 className="text-xl font-bold mb-6">
+                    {skillGroup.category}
+                  </h3>
                   <div className="space-y-6">
                     {skillGroup.items.map((skill, index) => (
                       <div key={skill.name}>
                         <div className="flex justify-between mb-2">
                           <span className="font-medium">{skill.name}</span>
-                          <span className="text-muted-foreground">{skill.level}%</span>
+                          <span className="text-muted-foreground">
+                            {skill.level}%
+                          </span>
                         </div>
                         <Progress value={skill.level} className="h-2" />
                       </div>
@@ -164,5 +169,5 @@ export default function Skills() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -1,32 +1,36 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { Button } from "@/components/ui/button"
-import { motion } from "framer-motion"
-import { ArrowRight, GitlabIcon as GitHub, Linkedin, Mail } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ArrowRight, GitlabIcon as GitHub, Linkedin, Mail } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   // Function to handle smooth scrolling
-  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    e.preventDefault()
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    sectionId: string
+  ) => {
+    e.preventDefault();
 
-    // Use the global scroll function if available
     if (window.scrollToSection) {
-      window.scrollToSection(sectionId)
+      window.scrollToSection(sectionId);
     } else {
       // Fallback if the global function isn't available yet
-      const element = document.getElementById(sectionId.replace("#", ""))
+      const element = document.getElementById(sectionId.replace("#", ""));
       if (element) {
-        const navbarHeight = document.querySelector("header")?.offsetHeight || 0
-        const yOffset = -(navbarHeight + 30)
-        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
-        window.scrollTo({ top: y, behavior: "smooth" })
+        const navbarHeight =
+          document.querySelector("header")?.offsetHeight || 0;
+        const yOffset = -(navbarHeight + 30);
+        const y =
+          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
     }
-  }
+  };
 
   return (
     <section id="home" className="pt-24 pb-16 md:pt-32 md:pb-24">
@@ -43,20 +47,34 @@ export default function Hero() {
                 Flutter Developer
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                Building <span className="text-primary">innovative solutions</span> with Flutter
+                Building{" "}
+                <span className="text-primary">innovative solutions</span> with
+                Flutter
               </h1>
               <p className="text-lg text-muted-foreground">
-                I'm a Flutter developer with a degree in Computer Engineering. I have a passion for creating clean,
-                efficient code and finding innovative solutions to complex problems.
+                I'm a Flutter developer with a degree in Computer Engineering. I
+                have a passion for creating clean, efficient code and finding
+                innovative solutions to complex problems.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button asChild size="lg" className="rounded-full">
-                  <a href="#projects" onClick={(e) => handleSmoothScroll(e, "#projects")}>
+                  <a
+                    href="#projects"
+                    onClick={(e) => handleSmoothScroll(e, "#projects")}
+                  >
                     View My Work <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="rounded-full">
-                  <a href="#contact" onClick={(e) => handleSmoothScroll(e, "#contact")}>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="rounded-full"
+                >
+                  <a
+                    href="#contact"
+                    onClick={(e) => handleSmoothScroll(e, "#contact")}
+                  >
                     Contact Me
                   </a>
                 </Button>
@@ -110,6 +128,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

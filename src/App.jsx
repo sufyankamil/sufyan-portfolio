@@ -44,19 +44,9 @@ export default function App() {
                         <About />
                     </View>
 
-                    {/* <View onLayout={(e) => handleLayout(e, "Skills")}>
-                    <Skills />
-                </View> */}
-
                     <Suspense fallback={<View style={{ padding: 40 }} />}>
                         <ExperienceFull />
                     </Suspense>
-
-
-                    {/* 
-                <View onLayout={(e) => handleLayout(e, "Experience")}>
-                    <ExperienceFull />
-                </View> */}
 
                     <Suspense fallback={<View style={{ padding: 40 }} />}>
                         <ExperienceFull />
@@ -66,10 +56,6 @@ export default function App() {
                     <Suspense fallback={<View style={{ padding: 40 }} />}>
                         <ProjectsSection />
                     </Suspense>
-
-                    {/* <View onLayout={(e) => handleLayout(e, "Projects")}>
-                    <ProjectsSection />
-                </View> */}
 
                     <View onLayout={(e) => handleLayout(e, "Contact")}>
                         <ContactSection />

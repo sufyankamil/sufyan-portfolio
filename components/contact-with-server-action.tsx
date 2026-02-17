@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
-import Link from "next/link";
 import { useToast } from "@/hooks/use-toast";
+import { motion } from "framer-motion";
+import { Github, Linkedin, Mail, MapPin, Send } from "lucide-react";
+import Link from "next/link";
+import { useRef, useState } from "react";
 // import { sendEmail } from "@/app/actions/send-email"
 
 export default function Contact() {
@@ -157,10 +157,10 @@ export default function Contact() {
                     <div>
                       <h4 className="font-medium">Email</h4>
                       <a
-                        href="mailto:info@sufyankamil.com"
+                        href="mailto:sufyankamil@hotmail.com"
                         className="text-muted-foreground hover:text-primary transition-colors"
                       >
-                        info@sufyankamil.com
+                        sufyankamil@hotmail.com
                       </a>
                     </div>
                   </div>
@@ -188,7 +188,7 @@ export default function Contact() {
                       <span className="sr-only">LinkedIn</span>
                     </Link>
                     <a
-                      href="mailto:info@sufyankamil.com"
+                      href="mailto:sufyankamil@hotmail.com"
                       className="bg-card hover:bg-muted p-3 rounded-full transition-colors"
                     >
                       <Mail className="h-5 w-5" />

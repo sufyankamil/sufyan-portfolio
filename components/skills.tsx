@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { motion } from "framer-motion";
 import Image from "next/image";
 
 const skills = [
@@ -19,7 +19,7 @@ const skills = [
     category: "Mobile & Web Development",
     items: [
       { name: "Flutter", level: 95 },
-      { name: "ReactJS", level: 85 },
+      { name: "React Native", level: 85 },
       { name: "HTML/CSS", level: 90 },
       { name: "Node.js", level: 85 },
     ],
@@ -28,7 +28,7 @@ const skills = [
     category: "Databases & Backend",
     items: [
       { name: "Firebase", level: 90 },
-      { name: "MySQL", level: 85 },
+      { name: "Supabase", level: 85 },
       { name: "MongoDB", level: 80 },
       { name: "PostgreSQL", level: 75 },
     ],
@@ -76,6 +76,14 @@ const technologies = [
   {
     name: "Git",
     icon: "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
+  },
+  {
+    name: "React Native",
+    icon: "https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg",
+  },
+  {
+    name: "Supabase",
+    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/supabase/supabase-original.svg",
   },
 ];
 

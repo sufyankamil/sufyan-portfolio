@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Briefcase, Award, Calendar } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
+import { Award, Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
@@ -14,6 +14,7 @@ const experiences = [
       "Developing cross-platform mobile applications using Flutter and Dart with a focus on performance and user experience.",
     achievements: [
       "Developed cross-platform mobile apps using Flutter & Dart, ensuring high performance",
+      "Developed and maintained React Native applications, expanding cross-platform capabilities",
       "Designed responsive UI/UX and integrated Firebase for real-time updates",
       "Implemented secure authentication & role-based access control",
       "Optimized app security and API integrations using Node.js",

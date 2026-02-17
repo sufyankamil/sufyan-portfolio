@@ -5,8 +5,8 @@ import type React from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, GitlabIcon as GitHub, Linkedin, Mail } from "lucide-react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   // Function to handle smooth scrolling
@@ -99,7 +99,7 @@ export default function Hero() {
                   <span className="sr-only">LinkedIn</span>
                 </Link>
                 <a
-                  href="mailto:info@sufyankamil.com"
+                  href="mailto:sufyankamil@hotmail.com"
                   className="text-muted-foreground hover:text-foreground transition-colors"
                 >
                   <Mail className="h-6 w-6" />

@@ -1,8 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
-import { Code, Smartphone, Zap, Layers } from "lucide-react";
+import { motion } from "framer-motion";
+import { Code, Layers, Smartphone, Zap } from "lucide-react";
 
 export default function About() {
   const features = [
@@ -87,8 +87,10 @@ export default function About() {
             <div>
               <h3 className="text-2xl font-bold mb-4">My Journey</h3>
               <p className="text-muted-foreground mb-4">
-                I have experience working with a variety of technologies,
-                including HTML, CSS, JavaScript, React, Flutter, Node.js, and
+                My journey spans across Frontend, Backend, Cloud, and Mobile
+                Development, evolving into a comprehensive Full Stack skillset. I
+                have experience working with a variety of technologies, including
+                HTML, CSS, JavaScript, React, React Native, Flutter, Node.js, and
                 MongoDB. In my current role as a Flutter Developer at Lauren
                 Information Technologies, I am leading the development of
                 cross-platform applications using Flutter, ensuring high-quality
@@ -102,7 +104,7 @@ export default function About() {
             <div className="space-y-4">
               <div className="flex items-center gap-4">
                 <div className="bg-primary/10 p-3 rounded-full">
-                  <span className="text-primary font-bold">3+</span>
+                  <span className="text-primary font-bold">4+</span>
                 </div>
                 <div>
                   <h4 className="font-medium">Years Experience</h4>

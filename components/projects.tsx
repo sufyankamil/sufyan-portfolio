@@ -1,14 +1,14 @@
 "use client"
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { ExternalLink, Github } from "lucide-react"
+import { motion } from "framer-motion"
+import { Github } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useState } from "react"
 
 // Update the projects array with actual image paths that will work reliably
 const projects = [
@@ -17,7 +17,7 @@ const projects = [
     title: "Donor Connect",
     description:
       "A mobile application connecting blood donors with recipients, featuring real-time notifications and location-based matching.",
-    image: "/placeholder.svg?height=400&width=600&text=Donor+Connect",
+    image: "/projects/donor_connect_cover.png",
     tags: ["Flutter", "Firebase", "Google Maps API", "Real-time Database"],
     github: "https://github.com/sufyankamil/donor-connect",
     demo: "https://github.com/sufyankamil/donor-connect",
@@ -28,7 +28,7 @@ const projects = [
     title: "OAuth Web App",
     description:
       "A secure authentication system built with Flutter for web, implementing OAuth protocols for seamless third-party authentication.",
-    image: "/placeholder.svg?height=400&width=600&text=OAuth+Web+App",
+    image: "/projects/oauth_web_app_cover.png",
     tags: ["Flutter Web", "OAuth", "Firebase Auth", "REST API"],
     github: "https://github.com/sufyankamil",
     demo: "https://github.com/sufyankamil",
@@ -39,7 +39,7 @@ const projects = [
     title: "SaaS-ScrapeFlow",
     description:
       "A full-stack web application for automated web scraping, data extraction, and analysis with customizable workflows.",
-    image: "/placeholder.svg?height=400&width=600&text=SaaS+ScrapeFlow",
+    image: "/projects/saas_scrapeflow_cover.png",
     tags: ["React", "Node.js", "MongoDB", "REST API"],
     github: "https://github.com/sufyankamil/SaaS-ScrapeFlow",
     demo: "https://github.com/sufyankamil/SaaS-ScrapeFlow",
@@ -49,11 +49,22 @@ const projects = [
     id: 4,
     title: "TaskMate",
     description:
-      "A productivity mobile application for task management with features like reminders, categories, and progress tracking.",
-    image: "/placeholder.svg?height=400&width=600&text=TaskMate",
+      "A global community app where users can ask for help with tasks, and people nearby or globally can offer assistance.",
+    image: "/projects/taskmate_cover.png",
     tags: ["Flutter", "Firebase", "Local Storage", "Notifications"],
     github: "https://github.com/sufyankamil/taskMate",
     demo: "https://github.com/sufyankamil/taskMate",
+    category: "mobile",
+  },
+  {
+    id: 5,
+    title: "CryptoTracker",
+    description:
+      "A comprehensive cryptocurrency tracking application offering real-time market data, portfolio management, and price alerts.",
+    image: "/projects/crypto_tracker_cover.png",
+    tags: ["React Native", "Redux", "CoinGecko API", "Charts"],
+    github: "https://github.com/sufyankamil",
+    demo: "https://github.com/sufyankamil",
     category: "mobile",
   },
 ]
@@ -161,13 +172,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
             ))}
           </div>
         </CardContent>
-        <CardFooter className="p-6 pt-0 flex justify-center">
-          <Button asChild variant="outline" size="sm">
-            <Link href={project.github} target="_blank" rel="noopener noreferrer">
-              <Github className="mr-2 h-4 w-4" /> View Code
-            </Link>
-          </Button>
-        </CardFooter>
+        
       </Card>
     </motion.div>
   )

@@ -1,5 +1,5 @@
+import { Github, Linkedin } from "lucide-react";
 import Link from "next/link";
-import { Github, Linkedin, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -35,13 +35,6 @@ export default function Footer() {
                 <Linkedin className="h-5 w-5" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
-              <a
-                href="mailto:info@sufyankamil.com"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <Mail className="h-5 w-5" />
-                <span className="sr-only">Email</span>
-              </a>
             </div>
             <p className="text-sm text-muted-foreground">
               © {new Date().getFullYear()} Sufyan Kamil. All rights reserved.

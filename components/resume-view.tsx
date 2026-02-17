@@ -1,8 +1,8 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Briefcase, GraduationCap, Award, Code } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Award, Briefcase, Code, GraduationCap } from "lucide-react";
 
 export default function ResumeView() {
   return (
@@ -13,10 +13,7 @@ export default function ResumeView() {
           <h2 className="text-2xl font-bold">Mohd Sufyan Asghar Kamil</h2>
           <p className="text-muted-foreground">Flutter Developer</p>
         </div>
-        <div className="space-y-1 text-sm">
-          <p>Email: info@sufyankamil.com</p>
-          <p>Location: Mumbai, India</p>
-        </div>
+      
       </div>
 
       {/* Work Experience */}
@@ -40,6 +37,10 @@ export default function ResumeView() {
               <li>
                 Developed cross-platform mobile apps using Flutter & Dart,
                 ensuring high performance.
+              </li>
+              <li>
+                Developed and maintained React Native applications, expanding
+                cross-platform capabilities.
               </li>
               <li>
                 Designed responsive UI/UX and integrated Firebase for real-time

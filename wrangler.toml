@@ -1,0 +1,3 @@
+name = "sufyan-portfolio"
+main = "package.json"
+compatibility_flags = ["nodejs_compat"]

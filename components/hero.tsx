@@ -44,17 +44,17 @@ export default function Hero() {
           >
             <div className="space-y-6 max-w-2xl">
               <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                Flutter Developer
+                Flutter & React Native Developer
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 Building{" "}
                 <span className="text-primary">innovative solutions</span> with
-                Flutter
+                Flutter & React Native
               </h1>
               <p className="text-lg text-muted-foreground">
-                I'm a Flutter developer with a degree in Computer Engineering. I
+                I'm a Mobile App Developer with a degree in Computer Engineering. I
                 have a passion for creating clean, efficient code and finding
-                innovative solutions to complex problems.
+                innovative solutions to complex problems using Flutter and React Native.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button asChild size="lg" className="rounded-full">

@@ -47,13 +47,13 @@ const projects = [
   },
   {
     id: 4,
-    title: "TaskMate",
+    title: "CivicNet",
     description:
-      "A global community app where users can ask for help with tasks, and people nearby or globally can offer assistance.",
-    image: "/projects/taskmate_cover.png",
-    tags: ["Flutter", "Firebase", "Local Storage", "Notifications"],
-    github: "https://github.com/sufyankamil/taskMate",
-    demo: "https://github.com/sufyankamil/taskMate",
+      "A Flutter application designed to connect, help, and build community, empowering users to engage in civic activities.",
+    image: "/projects/civicnet_feature_graphic.png",
+    tags: ["Flutter", "Dart", "Community", "Supabase", "Firebase"],
+    github: "https://github.com/sufyankamil/ai-civicnet",
+    demo: "https://github.com/sufyankamil/ai-civicnet",
     category: "mobile",
   },
   {
@@ -172,7 +172,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
             ))}
           </div>
         </CardContent>
-        
+
       </Card>
     </motion.div>
   )

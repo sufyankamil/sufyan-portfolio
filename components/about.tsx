@@ -44,11 +44,11 @@ export default function About() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">About Me</h2>
           <p className="text-lg text-muted-foreground">
-            I'm a Flutter developer with a degree in Computer Engineering. I
+            I'm a Flutter & React Native developer with a degree in Computer Engineering. I
             have experience working with a variety of technologies, including
-            HTML, CSS, JavaScript, React, Flutter, Node.js, and MongoDB. I
-            specialize in creating clean, efficient code and finding innovative
-            solutions to complex problems.
+            HTML, CSS, JavaScript, React, React Native, Flutter, Node.js, MongoDB,
+            Firebase, and Supabase. I specialize in creating clean, efficient code
+            and finding innovative solutions to complex problems.
           </p>
         </motion.div>
 

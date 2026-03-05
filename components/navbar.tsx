@@ -13,6 +13,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import ResumeView from "./resume-view";
+import { ThemeToggle } from "./theme-toggle";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -96,11 +97,10 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
             ? "bg-background/80 backdrop-blur-md shadow-sm"
             : "bg-transparent"
-        }`}
+          }`}
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -124,6 +124,7 @@ export default function Navbar() {
                   {item.name}
                 </a>
               ))}
+              <ThemeToggle />
               <Button
                 className="bg-primary hover:bg-primary/90 text-primary-foreground"
                 onClick={() => setShowResume(true)}
@@ -133,13 +134,16 @@ export default function Navbar() {
             </nav>
 
             {/* Mobile Navigation Toggle */}
-            <button
-              className="md:hidden text-foreground"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <div className="flex items-center gap-2 md:hidden">
+              <ThemeToggle />
+              <button
+                className="text-foreground"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+              >
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
 

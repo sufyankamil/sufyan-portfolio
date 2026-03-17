@@ -1,11 +1,24 @@
-import type React from "react"
 import type { Metadata } from "next"
+import type React from "react"
 import ClientLayout from "./ClientLayout"
 
 export const metadata: Metadata = {
   title: "Sufyan Kamil | Flutter Developer Portfolio",
   description: "Professional portfolio of Sufyan Kamil, showcasing Flutter development skills and projects",
-    generator: 'v0.dev'
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Sufyan Kamil",
+  },
+  generator: 'v0.dev'
+}
+
+export const viewport = {
+  themeColor: "#06b6d4",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 }
 
 export default function RootLayout({
@@ -19,3 +32,4 @@ export default function RootLayout({
 
 
 import './globals.css'
+

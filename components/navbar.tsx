@@ -4,10 +4,10 @@ import type React from "react";
 
 import { Button } from "@/components/ui/button";
 import {
-    Dialog,
-    DialogContent,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Smartphone, X } from "lucide-react";
@@ -20,7 +20,9 @@ const navItems = [
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
+  { name: "Sandbox", href: "#sandbox" },
   { name: "Experience", href: "#experience" },
+  { name: "Blog", href: "#blog" },
   { name: "Contact", href: "#contact" },
 ];
 

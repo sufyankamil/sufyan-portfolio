@@ -2,16 +2,16 @@
 
 import type React from "react";
 
-import { useState, useEffect, useCallback } from "react";
-import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, AnimatePresence } from "framer-motion";
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
 } from "@/components/ui/dialog";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, Smartphone, X } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 import ResumeView from "./resume-view";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -107,9 +107,12 @@ export default function Navbar() {
             <a
               href="#home"
               onClick={(e) => handleScrollToSection(e, "#home")}
-              className="text-2xl font-bold text-primary"
+              className="text-2xl font-bold text-primary flex items-center gap-2"
             >
-              Sufyan<span className="text-accent">Kamil</span>
+              <Smartphone className="h-8 w-8 text-primary" strokeWidth={2.5} />
+              <span>
+                Sufyan<span className="text-accent">Kamil</span>
+              </span>
             </a>
 
             {/* Desktop Navigation */}

@@ -12,6 +12,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 230 40% 6%;
     --primary: 230 80% 40%;
+    --primary-rgb: 20, 51, 184;
     --primary-foreground: 0 0% 98%;
     --secondary: 230 10% 92%;
     --secondary-foreground: 230 40% 12%;
@@ -36,6 +37,7 @@
     --popover: 230 30% 10%;
     --popover-foreground: 210 40% 98%;
     --primary: 185 100% 50%; /* Vibrant Cyan */
+    --primary-rgb: 0, 255, 255;
     --primary-foreground: 230 40% 6%; /* Dark text on neon buttons */
     --secondary: 230 25% 18%;
     --secondary-foreground: 210 40% 98%;

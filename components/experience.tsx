@@ -97,33 +97,36 @@ export default function Experience() {
               {experiences.map((exp, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
                 >
-                  <Card className="relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-1 h-full bg-primary"></div>
-                    <CardContent className="p-6">
-                      <div className="flex flex-wrap justify-between items-start mb-2">
-                        <h4 className="text-xl font-bold">{exp.title}</h4>
-                        <Badge variant="outline" className="flex items-center">
-                          <Calendar className="mr-1 h-3 w-3" /> {exp.period}
+                  <Card className="relative overflow-hidden border-primary/5 hover:border-primary/20 transition-all duration-300 hover:shadow-lg group">
+                    <div className="absolute top-0 left-0 w-1.5 h-full bg-primary transform origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500"></div>
+                    <CardContent className="p-8">
+                      <div className="flex flex-wrap justify-between items-start mb-4 gap-4">
+                        <h4 className="text-2xl font-bold group-hover:text-primary transition-colors">{exp.title}</h4>
+                        <Badge variant="secondary" className="bg-primary/5 text-primary border-primary/10 px-3 py-1">
+                          <Calendar className="mr-2 h-3.5 w-3.5" /> {exp.period}
                         </Badge>
                       </div>
-                      <p className="text-primary font-medium mb-4">
+                      <p className="text-primary font-semibold text-lg mb-4">
                         {exp.company}
                       </p>
-                      <p className="text-muted-foreground mb-4">
+                      <p className="text-muted-foreground mb-6 leading-relaxed">
                         {exp.description}
                       </p>
-                      <div className="space-y-2">
-                        <p className="font-medium">
-                          Key Responsibilities & Achievements:
+                      <div className="space-y-3">
+                        <p className="font-bold text-sm uppercase tracking-wider text-muted-foreground">
+                          Key Achievements
                         </p>
-                        <ul className="list-disc list-inside text-muted-foreground space-y-1">
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-muted-foreground">
                           {exp.achievements.map((achievement, i) => (
-                            <li key={i}>{achievement}</li>
+                            <li key={i} className="flex items-start gap-2 text-sm leading-snug">
+                              <span className="text-primary mt-1">•</span>
+                              {achievement}
+                            </li>
                           ))}
                         </ul>
                       </div>

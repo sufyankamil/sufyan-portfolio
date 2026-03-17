@@ -56,20 +56,24 @@ export default function About() {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ 
+                duration: 0.6, 
+                delay: index * 0.1,
+                ease: [0.22, 1, 0.36, 1] 
+              }}
             >
-              <Card className="h-full border-none shadow-md hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 flex flex-col items-center text-center">
-                  <div className="mb-4 p-3 rounded-full bg-primary/10">
+              <Card className="h-full border-primary/5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-background/50 backdrop-blur-sm group">
+                <CardContent className="p-8 flex flex-col items-center text-center h-full">
+                  <div className="mb-6 p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-inner">
                     {feature.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">
+                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground">{feature.description}</p>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
             </motion.div>

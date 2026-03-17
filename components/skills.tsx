@@ -1,8 +1,10 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { motion } from "framer-motion";
+import { Code2, Cpu, Database, Layers, Layout, ShieldCheck, Smartphone, Terminal, Zap } from "lucide-react";
 import Image from "next/image";
 
 const skills = [
@@ -89,93 +91,203 @@ const technologies = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-16 md:py-24 bg-muted/50">
-      <div className="container mx-auto px-4">
+    <section id="skills" className="py-24 bg-background relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-20"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">
-            Skills & Expertise
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
+            Technical <span className="text-primary">Ecosystem</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            My technical skills and proficiency in various technologies related
-            to Flutter development.
+          <p className="text-lg md:text-xl text-muted-foreground">
+            A specialized toolkit focused on building high-performance, 
+            cross-platform mobile applications and scalable web solutions.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {skills.map((skillGroup, groupIndex) => (
-            <motion.div
-              key={skillGroup.category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: groupIndex * 0.1 }}
-            >
-              <Card className="h-full">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-6">
-                    {skillGroup.category}
-                  </h3>
-                  <div className="space-y-6">
-                    {skillGroup.items.map((skill, index) => (
-                      <div key={skill.name}>
-                        <div className="flex justify-between mb-2">
-                          <span className="font-medium">{skill.name}</span>
-                          <span className="text-muted-foreground">
-                            {skill.level}%
-                          </span>
-                        </div>
-                        <Progress value={skill.level} className="h-2" />
-                      </div>
-                    ))}
+        {/* Bento Grid layout */}
+        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-20">
+          
+          {/* Main Skill: Flutter */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="md:col-span-2 lg:col-span-3 lg:row-span-2"
+          >
+            <Card className="h-full bg-primary/[0.03] border-primary/20 overflow-hidden relative group">
+              <div className="absolute top-0 right-0 p-8 text-primary/10 group-hover:text-primary/20 transition-colors">
+                <Smartphone size={120} />
+              </div>
+              <CardContent className="p-8 flex flex-col h-full relative z-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-3 bg-primary text-primary-foreground rounded-2xl shadow-lg shadow-primary/20">
+                    <Zap size={24} />
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                  <h3 className="text-2xl font-bold">Mobile Mastery</h3>
+                </div>
+                <p className="text-muted-foreground mb-8 text-lg">
+                  Extensive experience in Flutter & Dart, building secure and 
+                  fluid cross-platform applications with pixel-perfect UI.
+                </p>
+                <div className="space-y-6 mt-auto">
+                  {[
+                    { name: "Flutter", level: 95 },
+                    { name: "React Native", level: 85 },
+                    { name: "Dart", level: 95 }
+                  ].map((skill) => (
+                    <div key={skill.name}>
+                      <div className="flex justify-between mb-2">
+                        <span className="font-semibold">{skill.name}</span>
+                        <span className="text-primary font-bold">{skill.level}%</span>
+                      </div>
+                      <Progress value={skill.level} className="h-2.5 bg-primary/10" />
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Programming Languages */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="md:col-span-2 lg:col-span-3"
+          >
+            <Card className="h-full bg-card border-primary/10 hover:border-primary/30 transition-all">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-accent/10 text-accent rounded-xl">
+                    <Code2 size={20} />
+                  </div>
+                  <h3 className="text-xl font-bold">Development Core</h3>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  {[
+                    { name: "JavaScript", icon: Terminal },
+                    { name: "Java", icon: Cpu },
+                    { name: "Python", icon: Layers },
+                    { name: "HTML/CSS", icon: Layout }
+                  ].map((item) => (
+                    <div key={item.name} className="flex items-center gap-3 p-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors">
+                      <item.icon size={18} className="text-primary" />
+                      <span className="font-medium text-sm">{item.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Backend & Databases */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="md:col-span-2 lg:col-span-3"
+          >
+            <Card className="h-full border-primary/10 hover:border-primary/30 transition-all">
+              <CardContent className="p-8">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="p-2 bg-primary/10 text-primary rounded-xl">
+                    <Database size={20} />
+                  </div>
+                  <h3 className="text-xl font-bold">Data & Backend</h3>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {["Firebase", "Supabase", "MongoDB", "PostgreSQL", "Node.js"].map((db) => (
+                    <span key={db} className="px-4 py-2 bg-background border border-primary/10 rounded-full text-sm font-medium hover:text-primary transition-colors cursor-default">
+                      {db}
+                    </span>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          {/* Extra: Tools */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="md:col-span-2 lg:col-span-2"
+          >
+            <Card className="h-full bg-accent/[0.02] border-accent/20">
+              <CardContent className="p-6">
+                 <div className="flex items-center gap-3 mb-4 text-accent">
+                    <ShieldCheck size={20} />
+                    <h3 className="font-bold">Workflow</h3>
+                 </div>
+                 <div className="flex flex-wrap gap-2">
+                    {["Git", "CI/CD", "Docker", "Agile"].map(t => (
+                      <Badge key={t} variant="outline" className="border-accent/30 text-accent font-medium">{t}</Badge>
+                    ))}
+                 </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="md:col-span-2 lg:col-span-4"
+          >
+            <Card className="h-full bg-muted/30 border-primary/5 border-dashed">
+              <CardContent className="p-6 flex items-center justify-between">
+                 <div className="space-y-1">
+                    <h3 className="font-bold text-lg">Continuous Learning</h3>
+                    <p className="text-sm text-muted-foreground italic">"Always exploring new architectural patterns and cloud-native solutions."</p>
+                 </div>
+                 <Zap className="text-primary/40 animate-pulse" size={32} />
+              </CardContent>
+            </Card>
+          </motion.div>
+
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center pt-8 border-t border-primary/5"
         >
-          <h3 className="text-2xl font-bold mb-8">Technologies I Work With</h3>
-        </motion.div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-8">
-          {technologies.map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="flex flex-col items-center"
-            >
-              <div className="bg-card p-2 rounded-full shadow-md mb-3 w-24 h-24 flex items-center justify-center overflow-hidden">
-                <div className="relative w-full h-full rounded-full overflow-hidden">
-                  <Image
-                    src={tech.icon || "/placeholder.svg"}
-                    alt={tech.name}
-                    fill
-                    className="object-contain p-2"
-                    unoptimized={true} // This helps with external URLs
-                  />
-                </div>
+          <div className="grid grid-cols-2 sm:grid-cols-5 md:grid-cols-5 gap-8 opacity-60 hover:opacity-100 transition-opacity">
+            {technologies.map((tech, index) => (
+              <div key={tech.name} className="flex flex-col items-center group cursor-pointer">
+                 <div className="relative w-12 h-12 mb-3 grayscale group-hover:grayscale-0 transition-all duration-300">
+                    <Image
+                      src={tech.icon || "/placeholder.svg"}
+                      alt={tech.name}
+                      fill
+                      className="object-contain"
+                      unoptimized={true}
+                    />
+                 </div>
+                <span className="text-xs font-semibold uppercase tracking-tighter text-muted-foreground group-hover:text-primary transition-colors">
+                  {tech.name}
+                </span>
               </div>
-              <span className="text-sm font-medium">{tech.name}</span>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
 }
+
+

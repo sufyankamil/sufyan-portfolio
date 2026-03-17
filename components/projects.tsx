@@ -4,11 +4,11 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { motion } from "framer-motion"
-import { Github } from "lucide-react"
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { ExternalLink, Github, Smartphone, Globe as WebIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 // Update the projects array with actual image paths that will work reliably
 const projects = [
@@ -144,36 +144,93 @@ export default function Projects() {
 }
 
 function ProjectCard({ project, index }: { project: any; index: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
+      style={{ perspective: "1000px" }}
     >
-      <Card className="overflow-hidden h-full flex flex-col hover:shadow-lg transition-shadow">
-        <div className="relative h-48 w-full overflow-hidden">
-          <Image
-            src={project.image || "/placeholder.svg"}
-            alt={project.title}
-            fill
-            className="object-cover transition-transform duration-300 hover:scale-105"
-            priority={index < 2}
-          />
-        </div>
-        <CardContent className="flex-grow p-6">
-          <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-          <p className="text-muted-foreground mb-4">{project.description}</p>
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {project.tags.map((tag: string) => (
-              <Badge key={tag} variant="secondary">
-                {tag}
+      <motion.div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="h-full"
+      >
+        <Card className="overflow-hidden h-full flex flex-col hover:shadow-2xl transition-all duration-300 border-primary/10 bg-background/50 backdrop-blur-sm group">
+          <div className="relative h-56 w-full overflow-hidden">
+            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-40 transition-opacity z-10" />
+            <Image
+              src={project.image || "/placeholder.svg"}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              priority={index < 2}
+            />
+            <div className="absolute top-4 right-4 z-20">
+              <Badge className="bg-background/80 backdrop-blur-md text-foreground border-primary/20">
+                {project.category === "mobile" ? <Smartphone className="w-3 h-3 mr-1" /> : <WebIcon className="w-3 h-3 mr-1" />}
+                {project.category === "mobile" ? "Mobile" : "Web"}
               </Badge>
-            ))}
+            </div>
           </div>
-        </CardContent>
-
-      </Card>
+          <CardContent className="flex-grow p-6 relative" style={{ transform: "translateZ(30px)" }}>
+            <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+            <p className="text-muted-foreground mb-6 line-clamp-3">{project.description}</p>
+            <div className="flex flex-wrap gap-2 mb-6">
+              {project.tags.map((tag: string) => (
+                <Badge key={tag} variant="outline" className="bg-primary/5 text-primary border-primary/10 hover:bg-primary/20 transition-colors">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+            <div className="flex gap-3 mt-auto">
+              <Button asChild size="sm" variant="outline" className="rounded-full border-primary/20 hover:bg-primary hover:text-primary-foreground group/btn">
+                <Link href={project.github} target="_blank" rel="noopener noreferrer">
+                  <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" /> Code
+                </Link>
+              </Button>
+              <Button asChild size="sm" className="rounded-full shadow-lg shadow-primary/10">
+                <Link href={project.demo} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-4 h-4 mr-2" /> Demo
+                </Link>
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
     </motion.div>
   )
 }

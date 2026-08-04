@@ -1,3 +1,4 @@
 name = "sufyan-portfolio"
 compatibility_date = "2026-02-19"
 compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "out"

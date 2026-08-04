@@ -7,25 +7,25 @@ import { Code, Layers, Smartphone, Zap } from "lucide-react";
 export default function About() {
   const features = [
     {
-      icon: <Code className="h-10 w-10 text-primary" />,
+      icon: <Code className="h-10 w-10" />,
       title: "Clean Code",
       description:
         "I write clean, maintainable code following best practices and design patterns.",
     },
     {
-      icon: <Smartphone className="h-10 w-10 text-primary" />,
+      icon: <Smartphone className="h-10 w-10" />,
       title: "Responsive Design",
       description:
         "Creating interfaces that work flawlessly across all device sizes and orientations.",
     },
     {
-      icon: <Zap className="h-10 w-10 text-primary" />,
+      icon: <Zap className="h-10 w-10" />,
       title: "Performance Focused",
       description:
         "Building high-performance apps with smooth animations and efficient resource usage.",
     },
     {
-      icon: <Layers className="h-10 w-10 text-primary" />,
+      icon: <Layers className="h-10 w-10" />,
       title: "Architecture",
       description:
         "Implementing scalable architectures like BLoC, Provider, and GetX for maintainable apps.",
@@ -67,7 +67,7 @@ export default function About() {
             >
               <Card className="h-full border-primary/5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-background/50 backdrop-blur-sm group">
                 <CardContent className="p-8 flex flex-col items-center text-center h-full">
-                  <div className="mb-6 p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-all duration-300 shadow-inner">
+                  <div className="mb-6 p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shadow-inner">
                     {feature.icon}
                   </div>
                   <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
@@ -95,10 +95,11 @@ export default function About() {
                 Development, evolving into a comprehensive Full Stack skillset. I
                 have experience working with a variety of technologies, including
                 HTML, CSS, JavaScript, React, React Native, Flutter, Node.js, and
-                MongoDB. In my current role as a Flutter Developer at Lauren
-                Information Technologies, I am leading the development of
-                cross-platform applications using Flutter, ensuring high-quality
-                deliverables across web and mobile platforms.
+                MongoDB. In my current role as a Flutter & React Native Developer
+                at Lauren Information Technologies, I build cross-platform apps
+                with Flutter and React Native, and deliver transportation
+                platforms including driver/parent/para apps, passenger booking,
+                and district admin portals.
               </p>
               <p className="text-muted-foreground">
                 When I'm not coding, you can find me playing cricket or

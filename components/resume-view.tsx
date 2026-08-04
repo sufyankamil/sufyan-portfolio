@@ -11,7 +11,7 @@ export default function ResumeView() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h2 className="text-2xl font-bold">Mohd Sufyan Asghar Kamil</h2>
-          <p className="text-muted-foreground">Flutter Developer</p>
+          <p className="text-muted-foreground">Flutter & React Native Developer</p>
         </div>
       
       </div>
@@ -26,7 +26,7 @@ export default function ResumeView() {
           <CardContent className="p-5">
             <div className="flex flex-col md:flex-row justify-between mb-2">
               <div>
-                <h4 className="font-bold">Flutter Developer</h4>
+                <h4 className="font-bold">Flutter & React Native Developer</h4>
                 <p className="text-primary">
                   Lauren Information Technologies Pvt. Ltd.
                 </p>
@@ -39,8 +39,18 @@ export default function ResumeView() {
                 ensuring high performance.
               </li>
               <li>
-                Developed and maintained React Native applications, expanding
-                cross-platform capabilities.
+                Built SentryMS, a shared React Native codebase with role-specific
+                builds for drivers, parents, and paras—routes, live GPS, and trip
+                coordination.
+              </li>
+              <li>
+                Developed Sentry Rider, a passenger React Native app for NEMT trip
+                booking, live map tracking, and visit management.
+              </li>
+              <li>
+                Delivered features for SentryRide Web Portal
+                (Next.js/React/TypeScript)—route planning, live monitoring, and
+                admin workflows.
               </li>
               <li>
                 Designed responsive UI/UX and integrated Firebase for real-time

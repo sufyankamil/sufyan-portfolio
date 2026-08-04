@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
-import { ExternalLink, Github, Smartphone, Globe as WebIcon } from "lucide-react"
+import { Github, Smartphone, Globe as WebIcon } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRef, useState } from "react"
@@ -14,57 +14,79 @@ import { useRef, useState } from "react"
 const projects = [
   {
     id: 1,
+    title: "SentryMS — Driver / Parent / Para",
+    description:
+      "Shared React Native app with role-specific builds for drivers, parents, and paras—covering routes, live GPS, attendance, and real-time trip coordination from dispatch to drop-off.",
+    image: "/projects/sentryms_cover.png",
+    tags: ["React Native", "Live GPS", "Role-based Builds", "Real-time Tracking"],
+    category: "mobile",
+  },
+  {
+    id: 2,
+    title: "Sentry Rider — Passenger App",
+    description:
+      "Passenger-facing React Native app for non-emergency medical transport—book trips, track live status on a map, and manage visits, history, and support.",
+    image: "/projects/sentry_rider_cover.png",
+    tags: ["React Native", "Maps", "Trip Booking", "NEMT"],
+    category: "mobile",
+  },
+  {
+    id: 3,
+    title: "SentryRide Web Portal",
+    description:
+      "Next.js operations dashboard for school districts—route planning, live trip monitoring, fleet and student management, and admin workflows for safe daily transport.",
+    image: "/projects/sentryride_web_cover.png",
+    tags: ["Next.js", "React", "TypeScript", "Operations Dashboard"],
+    category: "web",
+  },
+  {
+    id: 4,
     title: "Donor Connect",
     description:
       "A mobile application connecting blood donors with recipients, featuring real-time notifications and location-based matching.",
     image: "/projects/donor_connect_cover.png",
     tags: ["Flutter", "Firebase", "Google Maps API", "Real-time Database"],
     github: "https://github.com/sufyankamil/donor-connect",
-    demo: "https://github.com/sufyankamil/donor-connect",
     category: "mobile",
   },
   {
-    id: 2,
+    id: 5,
     title: "OAuth Web App",
     description:
       "A secure authentication system built with Flutter for web, implementing OAuth protocols for seamless third-party authentication.",
     image: "/projects/oauth_web_app_cover.png",
     tags: ["Flutter Web", "OAuth", "Firebase Auth", "REST API"],
     github: "https://github.com/sufyankamil",
-    demo: "https://github.com/sufyankamil",
     category: "web",
   },
   {
-    id: 3,
+    id: 6,
     title: "SaaS-ScrapeFlow",
     description:
       "A full-stack web application for automated web scraping, data extraction, and analysis with customizable workflows.",
     image: "/projects/saas_scrapeflow_cover.png",
     tags: ["React", "Node.js", "MongoDB", "REST API"],
     github: "https://github.com/sufyankamil/SaaS-ScrapeFlow",
-    demo: "https://github.com/sufyankamil/SaaS-ScrapeFlow",
     category: "web",
   },
   {
-    id: 4,
+    id: 7,
     title: "CivicNet",
     description:
       "A Flutter application designed to connect, help, and build community, empowering users to engage in civic activities.",
     image: "/projects/civicnet_feature_graphic.png",
     tags: ["Flutter", "Dart", "Community", "Supabase", "Firebase"],
     github: "https://github.com/sufyankamil/ai-civicnet",
-    demo: "https://github.com/sufyankamil/ai-civicnet",
     category: "mobile",
   },
   {
-    id: 5,
+    id: 8,
     title: "CryptoTracker",
     description:
       "A comprehensive cryptocurrency tracking application offering real-time market data, portfolio management, and price alerts.",
     image: "/projects/crypto_tracker_cover.png",
     tags: ["React Native", "Redux", "CoinGecko API", "Charts"],
     github: "https://github.com/sufyankamil",
-    demo: "https://github.com/sufyankamil",
     category: "mobile",
   },
 ]
@@ -208,7 +230,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
           </div>
           <CardContent className="flex-grow p-6 relative" style={{ transform: "translateZ(30px)" }}>
             <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-            <p className="text-muted-foreground mb-6 line-clamp-3">{project.description}</p>
+            <p className="text-muted-foreground mb-6">{project.description}</p>
             <div className="flex flex-wrap gap-2 mb-6">
               {project.tags.map((tag: string) => (
                 <Badge key={tag} variant="outline" className="bg-primary/5 text-primary border-primary/10 hover:bg-primary/20 transition-colors">
@@ -216,18 +238,15 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
                 </Badge>
               ))}
             </div>
-            <div className="flex gap-3 mt-auto">
-              <Button asChild size="sm" variant="outline" className="rounded-full border-primary/20 hover:bg-primary hover:text-primary-foreground group/btn">
-                <Link href={project.github} target="_blank" rel="noopener noreferrer">
-                  <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" /> Code
-                </Link>
-              </Button>
-              <Button asChild size="sm" className="rounded-full shadow-lg shadow-primary/10">
-                <Link href={project.demo} target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-4 h-4 mr-2" /> Demo
-                </Link>
-              </Button>
-            </div>
+            {project.github && (
+              <div className="flex gap-3 mt-auto">
+                <Button asChild size="sm" variant="outline" className="rounded-full border-primary/20 hover:bg-primary hover:text-primary-foreground group/btn">
+                  <Link href={project.github} target="_blank" rel="noopener noreferrer">
+                    <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" /> Code
+                  </Link>
+                </Button>
+              </div>
+            )}
           </CardContent>
         </Card>
       </motion.div>

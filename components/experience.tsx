@@ -7,14 +7,16 @@ import { Award, Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
-    title: "Flutter Developer",
+    title: "Flutter & React Native Developer",
     company: "Lauren Information Technologies Pvt. Ltd.",
     period: "July 2023 - Present",
     description:
-      "Developing cross-platform mobile applications using Flutter and Dart with a focus on performance and user experience.",
+      "Developing cross-platform mobile and web applications using Flutter, Dart, React Native, and Next.js—with a focus on performance, UX, and transportation platforms for districts, drivers, parents, and riders.",
     achievements: [
       "Developed cross-platform mobile apps using Flutter & Dart, ensuring high performance",
-      "Developed and maintained React Native applications, expanding cross-platform capabilities",
+      "Built SentryMS, a shared React Native codebase with role-specific builds for drivers, parents, and paras—routes, live GPS, attendance, and trip coordination",
+      "Developed Sentry Rider, a passenger React Native app for NEMT trip booking, live map tracking, visit history, and support",
+      "Delivered features for SentryRide Web Portal (Next.js/React/TypeScript)—route planning, live monitoring, fleet and student admin workflows",
       "Designed responsive UI/UX and integrated Firebase for real-time updates",
       "Implemented secure authentication & role-based access control",
       "Optimized app security and API integrations using Node.js",
@@ -82,8 +84,8 @@ export default function Experience() {
             Experience & Education
           </h2>
           <p className="text-lg text-muted-foreground">
-            My professional journey, education, and credentials in Flutter
-            development and related technologies.
+            My professional journey, education, and credentials in Flutter,
+            React Native, and related technologies.
           </p>
         </motion.div>
 

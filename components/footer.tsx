@@ -8,10 +8,10 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <Link href="#home" className="text-xl md:text-2xl font-bold text-primary">
-              Flutter <span className="text-foreground">&</span> <span className="text-accent">React Native Dev</span>
+              Software <span className="text-foreground">&</span> <span className="text-accent">Mobile Engineer</span>
             </Link>
             <p className="text-muted-foreground mt-2 text-sm">
-              Building beautiful mobile experiences with Flutter & React Native
+              Building high-performance mobile, web, and full-stack solutions.
             </p>
           </div>
 

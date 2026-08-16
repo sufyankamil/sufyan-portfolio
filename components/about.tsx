@@ -26,9 +26,9 @@ export default function About() {
     },
     {
       icon: <Layers className="h-10 w-10" />,
-      title: "Architecture",
+      title: "Clean Architecture",
       description:
-        "Implementing scalable architectures like BLoC, Provider, and GetX for maintainable apps.",
+        "Implementing clean architectures, design patterns (MVVM, SOLID), and modular, testable codebases.",
     },
   ];
 
@@ -44,11 +44,11 @@ export default function About() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">About Me</h2>
           <p className="text-lg text-muted-foreground">
-            I'm a Flutter & React Native developer with a degree in Computer Engineering. I
-            have experience working with a variety of technologies, including
-            HTML, CSS, JavaScript, React, React Native, Flutter, Node.js, MongoDB,
-            Firebase, and Supabase. I specialize in creating clean, efficient code
-            and finding innovative solutions to complex problems.
+            I'm a Software Engineer & Mobile Developer with a degree in Computer Engineering. I
+            have experience working across the full stack with a variety of technologies, including
+            HTML/CSS, JavaScript/TypeScript, React, Next.js, React Native, Flutter, Dart, Node.js,
+            MongoDB, Firebase, and Supabase. I specialize in designing scalable systems,
+            writing clean code, and solving complex architectural challenges.
           </p>
         </motion.div>
 
@@ -87,17 +87,17 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <h3 className="text-2xl font-bold mb-4">My Journey</h3>
               <p className="text-muted-foreground mb-4">
                 My journey spans across Frontend, Backend, Cloud, and Mobile
-                Development, evolving into a comprehensive Full Stack skillset. I
+                Development, evolving into a comprehensive Software Engineering skillset. I
                 have experience working with a variety of technologies, including
                 HTML, CSS, JavaScript, React, React Native, Flutter, Node.js, and
-                MongoDB. In my current role as a Flutter & React Native Developer
-                at Lauren Information Technologies, I build cross-platform apps
-                with Flutter and React Native, and deliver transportation
+                MongoDB. In my current role as a Software & Mobile Engineer
+                at Lauren Information Technologies, I build scalable cross-platform apps
+                and web portals, delivering mission-critical transportation
                 platforms including driver/parent/para apps, passenger booking,
                 and district admin portals.
               </p>
@@ -106,7 +106,7 @@ export default function About() {
                 listening to music.
               </p>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 md:justify-self-end md:pr-12">
               <div className="flex items-center gap-4">
                 <div className="bg-primary/10 p-3 rounded-full">
                   <span className="text-primary font-bold">4+</span>
@@ -114,7 +114,7 @@ export default function About() {
                 <div>
                   <h4 className="font-medium">Years Experience</h4>
                   <p className="text-sm text-muted-foreground">
-                    In mobile development
+                    In software & mobile dev
                   </p>
                 </div>
               </div>

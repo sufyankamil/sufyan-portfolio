@@ -7,33 +7,32 @@ import { Award, Briefcase, Calendar } from "lucide-react";
 
 const experiences = [
   {
-    title: "Flutter & React Native Developer",
+    title: "Software & Mobile Engineer",
     company: "Lauren Information Technologies Pvt. Ltd.",
     period: "July 2023 - Present",
     description:
-      "Developing cross-platform mobile and web applications using Flutter, Dart, React Native, and Next.js—with a focus on performance, UX, and transportation platforms for districts, drivers, parents, and riders.",
+      "Developing scalable cross-platform applications and web systems using Flutter, React Native, Next.js, and Node.js, focusing on clean architecture, real-time telemetry, and logistics workflows.",
     achievements: [
-      "Developed cross-platform mobile apps using Flutter & Dart, ensuring high performance",
-      "Built SentryMS, a shared React Native codebase with role-specific builds for drivers, parents, and paras—routes, live GPS, attendance, and trip coordination",
-      "Developed Sentry Rider, a passenger React Native app for NEMT trip booking, live map tracking, visit history, and support",
-      "Delivered features for SentryRide Web Portal (Next.js/React/TypeScript)—route planning, live monitoring, fleet and student admin workflows",
-      "Designed responsive UI/UX and integrated Firebase for real-time updates",
-      "Implemented secure authentication & role-based access control",
-      "Optimized app security and API integrations using Node.js",
-      "Streamlined development with Flutterflow and Agile practices",
+      "Architected cross-platform mobile apps using Flutter & React Native, improving system performance and offline capabilities",
+      "Built TransitMS, a modular React Native system with dynamic configurations for role-specific builds (drivers, parents, paras)—integrating live GPS telemetry and real-time synchronization",
+      "Developed Transit Rider, a passenger app for NEMT booking, route optimization, and live maps tracking",
+      "Delivered administrative dashboards for Transit Web Portal (Next.js/TypeScript) for fleet monitoring and route scheduling",
+      "Implemented secure authentication and role-based access controls across backend microservices",
+      "Optimized API endpoints and backend queries (Node.js/Supabase) to reduce latency and security vulnerabilities",
+      "Maintained CI/CD pipelines, automated builds, and streamlined Agile team deliverables",
     ],
   },
   {
-    title: "Full Stack Developer",
+    title: "Software Engineer",
     company: "Headstrait Software LLP",
     period: "Jan 2022 - Apr 2023",
     description:
-      "Built and maintained full-stack web and mobile applications using modern technologies and best practices.",
+      "Built and maintained scalable web services and cross-platform applications using modern design patterns.",
     achievements: [
-      "Built full-stack web & mobile applications using Flutter, React, and Node.js",
-      "Developed RESTful APIs, reducing integration time by 30%",
-      "Improved app performance & security, reducing crash rates by 15%",
-      "Led testing & CI/CD efforts, cutting defects by 50%",
+      "Built robust full-stack applications using React, Flutter, Node.js, and relational databases",
+      "Developed RESTful APIs and middleware, reducing integration overhead by 30%",
+      "Improved performance & security profiles, reducing application crash rates by 15%",
+      "Established automated testing frameworks and CI/CD pipelines, cutting post-release defects by 50%",
     ],
   },
 ];
@@ -84,8 +83,8 @@ export default function Experience() {
             Experience & Education
           </h2>
           <p className="text-lg text-muted-foreground">
-            My professional journey, education, and credentials in Flutter,
-            React Native, and related technologies.
+            My professional journey, education, and credentials in software design,
+            full-stack architectures, and mobile systems.
           </p>
         </motion.div>
 

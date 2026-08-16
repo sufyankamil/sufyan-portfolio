@@ -2,10 +2,52 @@
 
 import { Button } from "@/components/ui/button";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { ArrowRight, Code2, Cpu, Github as GitHub, Layers, Linkedin, Mail, Smartphone, type LucideIcon } from "lucide-react";
+import { ArrowRight, Code2, Cpu, Layers, Mail, Smartphone, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
+import { toast } from "sonner";
+
+function GithubIcon(props: React.ComponentProps<"svg">) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+      <path d="M9 18c-4.51 2-5-2-7-2" />
+    </svg>
+  );
+}
+
+function LinkedinIcon(props: React.ComponentProps<"svg">) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
 
 function FloatingIcon({
   icon: Icon,
@@ -123,7 +165,7 @@ export default function Hero() {
                 transition={{ delay: 0.2 }}
                 className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide border border-primary/20"
               >
-                Flutter & React Native Developer
+                Software Engineer | Mobile Engineer
               </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight">
                 Building{" "}
@@ -133,8 +175,8 @@ export default function Hero() {
                 for mobile & web
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                I'm a Mobile App Developer passionate about creating elegant,
-                high-performance applications. Specializing in Flutter and
+                I'm a Software Engineer & Mobile Developer passionate about building elegant,
+                high-performance applications. Specializing in full-stack mobile, web, and
                 cross-platform technologies to bring complex ideas to life.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
@@ -162,24 +204,41 @@ export default function Hero() {
               </div>
               <div className="flex items-center gap-6 pt-4">
                 {[
-                  { icon: GitHub, href: "https://github.com/sufyankamil", label: "GitHub" },
-                  { icon: Linkedin, href: "https://www.linkedin.com/in/sufyankamil/", label: "LinkedIn" },
-                  { icon: Mail, href: "mailto:sufyankamil@hotmail.com", label: "Email" }
+                  { icon: GithubIcon, href: "https://github.com/sufyankamil", label: "GitHub" },
+                  { icon: LinkedinIcon, href: "https://www.linkedin.com/in/sufyankamil/", label: "LinkedIn" },
+                  { 
+                    icon: Mail, 
+                    onClick: () => {
+                      navigator.clipboard.writeText("sufyankamil15@gmail.com");
+                      toast.success("Email ID copied to clipboard!");
+                    }, 
+                    label: "Email" 
+                  }
                 ].map((social) => (
                   <motion.div
                     key={social.label}
                     whileHover={{ y: -4, scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Link
-                      href={social.href}
-                      target={social.href.startsWith("mailto") ? undefined : "_blank"}
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      <social.icon className="h-6 w-6" />
-                      <span className="sr-only">{social.label}</span>
-                    </Link>
+                    {"onClick" in social ? (
+                      <button
+                        onClick={social.onClick}
+                        className="text-muted-foreground hover:text-primary transition-colors focus:outline-none"
+                      >
+                        <social.icon className="h-6 w-6" />
+                        <span className="sr-only">{social.label}</span>
+                      </button>
+                    ) : (
+                      <Link
+                        href={social.href || ""}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        <social.icon className="h-6 w-6" />
+                        <span className="sr-only">{social.label}</span>
+                      </Link>
+                    )}
                   </motion.div>
                 ))}
               </div>
@@ -197,7 +256,7 @@ export default function Hero() {
               <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border-8 border-background shadow-2xl">
                 <Image
                   src="/images/profile.png"
-                  alt="Sufyan Kamil - Flutter Developer"
+                  alt="Sufyan Kamil - Software & Mobile Engineer"
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                   priority

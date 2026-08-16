@@ -13,8 +13,8 @@ const skills = [
     items: [
       { name: "Dart", level: 95 },
       { name: "JavaScript", level: 90 },
-      { name: "Java", level: 85 },
-      { name: "Python", level: 80 },
+      { name: "Swift", level: 80 },
+      { name: "Kotlin", level: 80 },
     ],
   },
   {
@@ -108,15 +108,15 @@ export default function Skills() {
             Technical <span className="text-primary">Ecosystem</span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground">
-            A specialized toolkit focused on building high-performance, 
-            cross-platform mobile applications and scalable web solutions.
+            A comprehensive engineering toolkit focused on building high-performance cross-platform 
+            mobile applications, scalable web solutions, and clean, modular systems.
           </p>
         </motion.div>
 
         {/* Bento Grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-20">
           
-          {/* Main Skill: Flutter */}
+          {/* Main Skill: Software & Mobile Engineering */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -132,17 +132,17 @@ export default function Skills() {
                   <div className="p-3 bg-primary text-primary-foreground rounded-2xl shadow-lg shadow-primary/20">
                     <Zap size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold">Mobile Mastery</h3>
+                  <h3 className="text-2xl font-bold">Software & Mobile Engineering</h3>
                 </div>
                 <p className="text-muted-foreground mb-8 text-lg">
-                  Extensive experience in Flutter & Dart, building secure and 
-                  fluid cross-platform applications with pixel-perfect UI.
+                  Extensive experience designing robust cross-platform mobile apps, 
+                  implementing clean architecture, and building production-ready web portals.
                 </p>
                 <div className="space-y-6 mt-auto">
                   {[
-                    { name: "Flutter", level: 95 },
-                    { name: "React Native", level: 85 },
-                    { name: "Dart", level: 95 }
+                    { name: "Flutter & React Native", level: 95 },
+                    { name: "Frontend (React / Next.js)", level: 88 },
+                    { name: "Backend (Node.js & Databases)", level: 85 }
                   ].map((skill) => (
                     <div key={skill.name}>
                       <div className="flex justify-between mb-2">
@@ -171,14 +171,14 @@ export default function Skills() {
                   <div className="p-2 bg-accent/10 text-accent rounded-xl">
                     <Code2 size={20} />
                   </div>
-                  <h3 className="text-xl font-bold">Development Core</h3>
+                  <h3 className="text-xl font-bold">Programming Languages</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { name: "JavaScript", icon: Terminal },
-                    { name: "Java", icon: Cpu },
-                    { name: "Python", icon: Layers },
-                    { name: "HTML/CSS", icon: Layout }
+                    { name: "JS / TypeScript", icon: Terminal },
+                    { name: "Dart", icon: Smartphone },
+                    { name: "Swift", icon: Code2 },
+                    { name: "Kotlin", icon: Layers }
                   ].map((item) => (
                     <div key={item.name} className="flex items-center gap-3 p-3 rounded-xl bg-muted/50 hover:bg-muted transition-colors">
                       <item.icon size={18} className="text-primary" />

@@ -11,9 +11,9 @@ import Skills from "@/components/skills";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sufyan Kamil | Flutter Developer Portfolio",
+  title: "Sufyan Kamil | Software Engineer | Mobile Engineer",
   description:
-    "Professional portfolio of Sufyan Kamil, showcasing Flutter development skills and projects",
+    "Professional portfolio of Sufyan Kamil, showcasing Software Engineering, Full Stack, and Mobile Development skills and projects",
 };
 
 export default function Home() {

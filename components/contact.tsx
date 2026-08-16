@@ -46,11 +46,11 @@ export default function Contact() {
                     Whether you have a specific project in mind or just want to say hi, my inbox is always open.
                   </p>
                   <div className="flex flex-col gap-4 w-full">
-                    <a href="mailto:sufyankamil@hotmail.com" className="flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/20 transition-all group">
+                    <a href="mailto:sufyankamil15@gmail.com" className="flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/20 transition-all group">
                       <div className="p-2 bg-white/10 rounded-lg group-hover:scale-110 transition-transform">
                         <Mail className="h-5 w-5" />
                       </div>
-                      <span className="font-medium">sufyankamil@hotmail.com</span>
+                      <span className="font-medium">sufyankamil15@gmail.com</span>
                     </a>
                   </div>
                 </div>

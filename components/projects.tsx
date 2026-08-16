@@ -14,7 +14,7 @@ import { useRef, useState } from "react"
 const projects = [
   {
     id: 1,
-    title: "SentryMS — Driver / Parent / Para",
+    title: "TransitMS — Driver / Parent / Para",
     description:
       "Shared React Native app with role-specific builds for drivers, parents, and paras—covering routes, live GPS, attendance, and real-time trip coordination from dispatch to drop-off.",
     image: "/projects/sentryms_cover.png",
@@ -23,7 +23,7 @@ const projects = [
   },
   {
     id: 2,
-    title: "Sentry Rider — Passenger App",
+    title: "Transit Rider — Passenger App",
     description:
       "Passenger-facing React Native app for non-emergency medical transport—book trips, track live status on a map, and manage visits, history, and support.",
     image: "/projects/sentry_rider_cover.png",
@@ -32,7 +32,7 @@ const projects = [
   },
   {
     id: 3,
-    title: "SentryRide Web Portal",
+    title: "Transit Web Portal",
     description:
       "Next.js operations dashboard for school districts—route planning, live trip monitoring, fleet and student management, and admin workflows for safe daily transport.",
     image: "/projects/sentryride_web_cover.png",
@@ -108,8 +108,7 @@ export default function Projects() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">My Projects</h2>
           <p className="text-lg text-muted-foreground">
-            Explore my portfolio of Flutter applications spanning various domains and showcasing different technical
-            capabilities and design approaches.
+            Explore my portfolio of web and mobile applications spanning various domains and showcasing complex architectural patterns.
           </p>
         </motion.div>
 

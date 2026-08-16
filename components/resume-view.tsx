@@ -11,7 +11,7 @@ export default function ResumeView() {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h2 className="text-2xl font-bold">Mohd Sufyan Asghar Kamil</h2>
-          <p className="text-muted-foreground">Flutter & React Native Developer</p>
+          <p className="text-muted-foreground">Software Engineer | Mobile Engineer</p>
         </div>
       
       </div>
@@ -26,7 +26,7 @@ export default function ResumeView() {
           <CardContent className="p-5">
             <div className="flex flex-col md:flex-row justify-between mb-2">
               <div>
-                <h4 className="font-bold">Flutter & React Native Developer</h4>
+                <h4 className="font-bold">Software & Mobile Engineer</h4>
                 <p className="text-primary">
                   Lauren Information Technologies Pvt. Ltd.
                 </p>
@@ -35,20 +35,20 @@ export default function ResumeView() {
             </div>
             <ul className="list-disc list-inside space-y-1 mt-3 text-muted-foreground">
               <li>
-                Developed cross-platform mobile apps using Flutter & Dart,
-                ensuring high performance.
+                Architected cross-platform mobile apps using Flutter & React Native,
+                improving system performance and offline capabilities.
               </li>
               <li>
-                Built SentryMS, a shared React Native codebase with role-specific
+                Built TransitMS, a shared React Native codebase with role-specific
                 builds for drivers, parents, and paras—routes, live GPS, and trip
                 coordination.
               </li>
               <li>
-                Developed Sentry Rider, a passenger React Native app for NEMT trip
+                Developed Transit Rider, a passenger React Native app for NEMT trip
                 booking, live map tracking, and visit management.
               </li>
               <li>
-                Delivered features for SentryRide Web Portal
+                Delivered features for Transit Web Portal
                 (Next.js/React/TypeScript)—route planning, live monitoring, and
                 admin workflows.
               </li>
@@ -73,14 +73,14 @@ export default function ResumeView() {
           <CardContent className="p-5">
             <div className="flex flex-col md:flex-row justify-between mb-2">
               <div>
-                <h4 className="font-bold">Full Stack Developer</h4>
+                <h4 className="font-bold">Software Engineer</h4>
                 <p className="text-primary">Headstrait Software LLP</p>
               </div>
               <Badge variant="outline">Jan 2022 - Apr 2023</Badge>
             </div>
             <ul className="list-disc list-inside space-y-1 mt-3 text-muted-foreground">
               <li>
-                Built full-stack web & mobile applications using Flutter, React,
+                Built robust full-stack web & mobile applications using React, Flutter,
                 and Node.js.
               </li>
               <li>Developed RESTful APIs, reducing integration time by 30%.</li>
@@ -127,10 +127,10 @@ export default function ResumeView() {
             <CardContent className="p-5">
               <h4 className="font-bold mb-2">Languages</h4>
               <div className="flex flex-wrap gap-2">
-                <Badge>Java</Badge>
-                <Badge>Python</Badge>
                 <Badge>JavaScript</Badge>
                 <Badge>Dart</Badge>
+                <Badge>Swift</Badge>
+                <Badge>Kotlin</Badge>
               </div>
             </CardContent>
           </Card>

@@ -22,12 +22,19 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <div className="border-t border-border/20" />
         <About />
+        <div className="border-t border-border/20" />
         <Projects />
+        <div className="border-t border-border/20" />
         <Skills />
-        <InteractionSandbox />
+        <div className="border-t border-border/20" />
         <Experience />
+        <div className="border-t border-border/20" />
+        <InteractionSandbox />
+        <div className="border-t border-border/20" />
         <Blog />
+        <div className="border-t border-border/20" />
         <Contact />
       </main>
       <Footer />

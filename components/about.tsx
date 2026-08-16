@@ -1,10 +1,78 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Code, Layers, Smartphone, Zap } from "lucide-react";
+import { ScrollParallax } from "@/components/scroll-parallax";
+import { useRef } from "react";
+
+function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  
+  // Normalized x/y mouse coordinate percentages relative to card center (-0.5 to 0.5)
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // Map mouse positions to 3D rotation angles
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [12, -12]), { damping: 25, stiffness: 250 });
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-12, 12]), { damping: 25, stiffness: 250 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const relativeX = (e.clientX - rect.left) / rect.width - 0.5;
+    const relativeY = (e.clientY - rect.top) / rect.height - 0.5;
+    x.set(relativeX);
+    y.set(relativeY);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+        perspective: 800,
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 export default function About() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springConfig = { damping: 35, stiffness: 150 };
+  
+  // Grid shifts slightly in direction of mouse
+  const gridX = useSpring(useTransform(mouseX, [-0.5, 0.5], [-16, 16]), springConfig);
+  const gridY = useSpring(useTransform(mouseY, [-0.5, 0.5], [-16, 16]), springConfig);
+
+  // Background bubbles move in opposite direction
+  const bgX = useSpring(useTransform(mouseX, [-0.5, 0.5], [35, -35]), springConfig);
+  const bgY = useSpring(useTransform(mouseY, [-0.5, 0.5], [35, -35]), springConfig);
+
+  const handleSectionMouseMove = (e: React.MouseEvent) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
+
   const features = [
     {
       icon: <Code className="h-10 w-10" />,
@@ -33,8 +101,19 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-muted/50">
-      <div className="container mx-auto px-4">
+    <section 
+      id="about" 
+      ref={sectionRef} 
+      onMouseMove={handleSectionMouseMove}
+      className="relative py-16 md:py-24 bg-muted/50 overflow-hidden"
+    >
+      {/* Decorative Parallax Background Elements (moves opposite to grid) */}
+      <motion.div style={{ x: bgX, y: bgY }} className="absolute inset-0 pointer-events-none overflow-hidden">
+        <ScrollParallax yOffset={120} className="absolute -top-12 -left-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
+        <ScrollParallax yOffset={-140} className="absolute bottom-12 -right-12 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+      </motion.div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           className="text-center max-w-3xl mx-auto mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -42,17 +121,21 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">About Me</h2>
+          <div className="inline-flex items-center gap-2 mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+            <span className="text-[10px] uppercase font-mono tracking-widest text-primary font-bold">01 / WHO I AM</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">About Me</h2>
           <p className="text-lg text-muted-foreground">
             I'm a Software Engineer & Mobile Developer with a degree in Computer Engineering. I
             have experience working across the full stack with a variety of technologies, including
-            HTML/CSS, JavaScript/TypeScript, React, Next.js, React Native, Flutter, Dart, Node.js,
+            TypeScript, JavaScript, React, Next.js, React Native, Flutter, Dart, Node.js,
             MongoDB, Firebase, and Supabase. I specialize in designing scalable systems,
             writing clean code, and solving complex architectural challenges.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div style={{ x: gridX, y: gridY }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -64,69 +147,77 @@ export default function About() {
                 delay: index * 0.1,
                 ease: [0.22, 1, 0.36, 1] 
               }}
+              className="h-full"
             >
-              <Card className="h-full border-primary/5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 bg-background/50 backdrop-blur-sm group">
-                <CardContent className="p-8 flex flex-col items-center text-center h-full">
-                  <div className="mb-6 p-4 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 shadow-inner">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-                </CardContent>
-              </Card>
+              <TiltCard className="h-full">
+                <Card className="h-full border border-border/50 bg-card/30 hover:bg-card/85 dark:bg-zinc-900/20 dark:hover:bg-zinc-900/60 backdrop-blur-md shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group overflow-hidden relative" style={{ transformStyle: "preserve-3d" }}>
+                  {/* Micro-glow spot */}
+                  <div className="absolute -right-8 -top-8 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors duration-500" />
+                  
+                  <CardContent className="p-8 flex flex-col items-start text-left h-full" style={{ transformStyle: "preserve-3d" }}>
+                    <div className="mb-6 relative w-14 h-14 flex items-center justify-center rounded-2xl bg-primary/10 text-primary transition-all duration-500 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground shadow-md" style={{ transform: "translateZ(40px)", transformStyle: "preserve-3d" }}>
+                      {/* Backdrop Glow */}
+                      <div className="absolute inset-0 rounded-2xl bg-primary/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="relative z-10">{feature.icon}</div>
+                    </div>
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors" style={{ transform: "translateZ(30px)" }}>
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed" style={{ transform: "translateZ(20px)" }}>{feature.description}</p>
+                  </CardContent>
+                </Card>
+              </TiltCard>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <motion.div
-          className="mt-16 bg-card rounded-xl p-6 md:p-8 shadow-lg"
+          className="mt-16 bg-card/35 dark:bg-zinc-900/20 backdrop-blur-md rounded-2xl p-8 md:p-10 border border-border/40 shadow-xl relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <h3 className="text-2xl font-bold mb-4">My Journey</h3>
-              <p className="text-muted-foreground mb-4">
+          {/* Subtle background section marker */}
+          <div className="absolute -right-10 -bottom-10 text-[10rem] font-black text-foreground/[0.02] pointer-events-none select-none">
+            01
+          </div>
+
+          <div className="grid lg:grid-cols-5 gap-12 items-center relative z-10">
+            <div className="lg:col-span-3 space-y-6">
+              <div className="flex items-center gap-2">
+                <span className="h-0.5 w-8 bg-primary rounded-full"></span>
+                <h3 className="text-2xl font-bold tracking-tight">My Journey</h3>
+              </div>
+              <p className="text-muted-foreground leading-relaxed">
                 My journey spans across Frontend, Backend, Cloud, and Mobile
                 Development, evolving into a comprehensive Software Engineering skillset. I
                 have experience working with a variety of technologies, including
-                HTML, CSS, JavaScript, React, React Native, Flutter, Node.js, and
-                MongoDB. In my current role as a Software & Mobile Engineer
+                TypeScript, JavaScript, React, Next.js, React Native, Flutter, Node.js, and
+                Supabase. In my current role as a Software & Mobile Engineer
                 at Lauren Information Technologies, I build scalable cross-platform apps
                 and web portals, delivering mission-critical transportation
                 platforms including driver/parent/para apps, passenger booking,
                 and district admin portals.
               </p>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground leading-relaxed">
                 When I'm not coding, you can find me playing cricket or
                 listening to music.
               </p>
             </div>
-            <div className="space-y-4 md:justify-self-end md:pr-12">
-              <div className="flex items-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                  <span className="text-primary font-bold">4+</span>
+            <div className="lg:col-span-2 w-full">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="p-6 rounded-2xl bg-primary/5 dark:bg-primary/10 border border-primary/10 flex flex-col items-center justify-center text-center shadow-inner hover:-translate-y-1 transition-all duration-300">
+                  <span className="text-4xl md:text-5xl font-extrabold text-primary mb-2 tracking-tight">4+</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    Years Experience
+                  </span>
                 </div>
-                <div>
-                  <h4 className="font-medium">Years Experience</h4>
-                  <p className="text-sm text-muted-foreground">
-                    In software & mobile dev
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-4">
-                <div className="bg-primary/10 p-3 rounded-full">
-                  <span className="text-primary font-bold">20+</span>
-                </div>
-                <div>
-                  <h4 className="font-medium">Projects Completed</h4>
-                  <p className="text-sm text-muted-foreground">
-                    Across various industries
-                  </p>
+                <div className="p-6 rounded-2xl bg-accent/5 dark:bg-accent/10 border border-accent/10 flex flex-col items-center justify-center text-center shadow-inner hover:-translate-y-1 transition-all duration-300">
+                  <span className="text-4xl md:text-5xl font-extrabold text-accent mb-2 tracking-tight">20+</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                    Projects Done
+                  </span>
                 </div>
               </div>
             </div>

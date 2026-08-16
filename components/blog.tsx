@@ -80,7 +80,7 @@ export default function Blog() {
             Technical Insights
           </Badge>
           <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
-            Lessons <span className="text-primary">Learned</span>
+            Engineering <span className="text-primary">Insights</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             Sharing technical discoveries and architectural patterns from 

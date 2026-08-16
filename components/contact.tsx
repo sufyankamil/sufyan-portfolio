@@ -7,81 +7,86 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { useRef, useState } from "react";
 
 export default function Contact() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText("sufyankamil15@gmail.com");
+    toast({
+      title: "Email Copied",
+      description: "sufyankamil15@gmail.com copied to clipboard!",
+    });
+  };
 
   return (
-    <section id="contact" className="py-16 md:py-24 bg-muted/50">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="relative py-24 bg-primary text-primary-foreground overflow-hidden">
+      {/* Huge Background Typography (Layered Behind Content) */}
+      <div className="absolute inset-0 z-0 flex justify-center items-center pointer-events-none select-none overflow-hidden">
+        <h2 className="text-[16vw] font-black leading-none tracking-tighter text-black/10 select-none">
+          LET'S TALK
+        </h2>
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4 flex flex-col items-center justify-center">
+        {/* Floating mockup card */}
         <motion.div
-          className="text-center max-w-3xl mx-auto mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative w-full max-w-md bg-stone-100 dark:bg-zinc-950 text-foreground rounded-[2.5rem] p-8 border-4 border-stone-200/50 dark:border-zinc-800 shadow-2xl flex flex-col items-center gap-6"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 pt-6">
-            Get In Touch
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Have a project in mind or want to discuss potential opportunities?
-            Feel free to reach out through any of the channels below.
+          {/* Header indicator inside card */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 text-[10px] font-semibold tracking-wide">
+            <span className="w-1.5 h-1.5 bg-primary rounded-full animate-ping"></span>
+            AVAILABLE FOR NEW PROJECTS
+          </div>
+
+          <div className="text-center space-y-2">
+            <h3 className="text-2xl font-bold tracking-tight">Let's Connect</h3>
+            <p className="text-sm text-muted-foreground max-w-xs">
+              Feel free to reach out via email or connect with me on professional platforms.
+            </p>
+          </div>
+
+          {/* Sizable pill-shaped email box */}
+          <button
+            onClick={handleCopyEmail}
+            className="w-full flex items-center justify-between gap-4 p-4 rounded-full bg-white dark:bg-zinc-900 border border-border hover:border-primary/50 hover:shadow-lg transition-all duration-300 group"
+          >
+            <span className="font-semibold text-xs md:text-sm pl-4 tracking-wide truncate">
+              sufyankamil15@gmail.com
+            </span>
+            <div className="p-3 bg-primary text-primary-foreground rounded-full group-hover:scale-105 transition-transform shadow-md">
+              <Mail className="h-4 w-4" />
+            </div>
+          </button>
+
+          {/* Social connect outline buttons */}
+          <div className="flex gap-3 w-full">
+            <a
+              href="https://www.linkedin.com/in/sufyankamil/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 py-3 text-center rounded-full border border-border bg-background hover:bg-muted text-xs font-bold tracking-wide transition-all shadow-sm flex items-center justify-center gap-2"
+            >
+              <Linkedin className="h-4 w-4" />
+              LINKEDIN
+            </a>
+            <a
+              href="https://github.com/sufyankamil"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 py-3 text-center rounded-full border border-border bg-background hover:bg-muted text-xs font-bold tracking-wide transition-all shadow-sm flex items-center justify-center gap-2"
+            >
+              <Github className="h-4 w-4" />
+              GITHUB
+            </a>
+          </div>
+
+          <p className="text-[10px] text-muted-foreground font-mono">
+            * Typically replies within 24 hours
           </p>
         </motion.div>
-
-        <div className="flex justify-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="w-full max-w-2xl"
-          >
-            <Card className="overflow-hidden border-primary/10 shadow-2xl bg-background/50 backdrop-blur-sm">
-              <CardContent className="p-0 flex flex-col md:flex-row h-full">
-                <div className="flex-1 p-8 bg-primary text-primary-foreground flex flex-col justify-center items-center md:items-start text-center md:text-left">
-                  <h3 className="text-3xl font-bold mb-4">Let's Build Something Great</h3>
-                  <p className="opacity-90 mb-8 max-w-xs">
-                    Whether you have a specific project in mind or just want to say hi, my inbox is always open.
-                  </p>
-                  <div className="flex flex-col gap-4 w-full">
-                    <a href="mailto:sufyankamil15@gmail.com" className="flex items-center gap-3 p-3 rounded-xl bg-white/10 hover:bg-white/20 transition-all group">
-                      <div className="p-2 bg-white/10 rounded-lg group-hover:scale-110 transition-transform">
-                        <Mail className="h-5 w-5" />
-                      </div>
-                      <span className="font-medium">sufyankamil15@gmail.com</span>
-                    </a>
-                  </div>
-                </div>
-                <div className="flex-1 p-8 flex flex-col justify-center items-center text-center">
-                  <h4 className="font-bold text-xl mb-6">Social Connect</h4>
-                  <div className="flex gap-4">
-                    {[
-                      { icon: Github, href: "https://github.com/sufyankamil", label: "GitHub" },
-                      { icon: Linkedin, href: "https://www.linkedin.com/in/sufyankamil/", label: "LinkedIn" }
-                    ].map((social) => (
-                      <motion.a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ y: -5 }}
-                        className="p-4 bg-muted rounded-2xl hover:bg-primary/10 hover:text-primary transition-all shadow-sm"
-                      >
-                        <social.icon className="h-6 w-6" />
-                        <span className="sr-only">{social.label}</span>
-                      </motion.a>
-                    ))}
-                  </div>
-                  <p className="mt-8 text-sm text-muted-foreground">
-                    Usually responds within 24 hours.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
-        </div>
       </div>
     </section>
   );

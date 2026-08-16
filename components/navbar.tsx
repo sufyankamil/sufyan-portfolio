@@ -163,16 +163,19 @@ export default function Navbar() {
               className="md:hidden bg-background/95 backdrop-blur-md"
             >
               <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-                {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    onClick={(e) => handleScrollToSection(e, item.href)}
-                    className="text-foreground hover:text-primary py-2 transition-colors duration-200"
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                {navItems.map((item) => {
+                  if (item.name === "Sandbox") return null;
+                  return (
+                    <a
+                      key={item.name}
+                      href={item.href}
+                      onClick={(e) => handleScrollToSection(e, item.href)}
+                      className="text-foreground hover:text-primary py-2 transition-colors duration-200"
+                    >
+                      {item.name}
+                    </a>
+                  );
+                })}
                 <Button
                   className="bg-primary hover:bg-primary/90 text-primary-foreground w-full"
                   onClick={() => {

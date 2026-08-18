@@ -55,7 +55,7 @@ export default function ResumeView() {
                   July 2023 - Present
                 </Badge>
               </div>
-              <div className="space-y-2.5 text-muted-foreground text-xs leading-relaxed">
+              <div className="space-y-2.5 text-muted-foreground text-sm leading-relaxed">
                 {litAchievements.map((ach, idx) => (
                   <div key={idx} className="flex items-start gap-2.5">
                     <span className="text-primary mt-1 select-none font-bold">•</span>
@@ -77,7 +77,7 @@ export default function ResumeView() {
                   Jan 2022 - Apr 2023
                 </Badge>
               </div>
-              <div className="space-y-2.5 text-muted-foreground text-xs leading-relaxed">
+              <div className="space-y-2.5 text-muted-foreground text-sm leading-relaxed">
                 {headstraitAchievements.map((ach, idx) => (
                   <div key={idx} className="flex items-start gap-2.5">
                     <span className="text-primary mt-1 select-none font-bold">•</span>
@@ -107,7 +107,7 @@ export default function ResumeView() {
               </div>
               <Badge variant="outline" className="rounded-full px-3 py-0.5 text-[10px] font-mono">2019 - 2022</Badge>
             </div>
-            <p className="mt-4 text-muted-foreground text-xs font-mono bg-muted/50 dark:bg-zinc-800/40 inline-block px-3 py-1 rounded-md border border-border/20">
+            <p className="mt-4 text-muted-foreground text-sm font-mono bg-muted/50 dark:bg-zinc-800/40 inline-block px-3 py-1 rounded-md border border-border/20">
               CGPA: 8.3 / 10
             </p>
           </CardContent>
@@ -177,7 +177,7 @@ export default function ResumeView() {
           <Card className="border border-border/40 bg-card/45 backdrop-blur-md rounded-2xl hover:border-primary/20 transition-all duration-300">
             <CardContent className="p-6">
               <h4 className="font-bold text-sm mb-3">Certifications</h4>
-              <div className="space-y-2.5 text-muted-foreground text-xs leading-relaxed">
+              <div className="space-y-2.5 text-muted-foreground text-sm leading-relaxed">
                 <div className="flex items-start gap-2.5">
                   <span className="text-primary mt-1 select-none font-bold">•</span>
                   <span>Android ATC - Flutter Certified Application Developer</span>
@@ -197,7 +197,7 @@ export default function ResumeView() {
           <Card className="border border-border/40 bg-card/45 backdrop-blur-md rounded-2xl hover:border-primary/20 transition-all duration-300">
             <CardContent className="p-6">
               <h4 className="font-bold text-sm mb-3">Achievements</h4>
-              <div className="space-y-2.5 text-muted-foreground text-xs leading-relaxed">
+              <div className="space-y-2.5 text-muted-foreground text-sm leading-relaxed">
                 <div className="flex items-start gap-2.5">
                   <span className="text-primary mt-1 select-none font-bold">•</span>
                   <span>Recognized as a Top Performer during the Internship at Internship Studio for outstanding contributions in web development and improving user engagement by 15%.</span>

@@ -238,16 +238,25 @@ export default function Skills() {
                   </div>
                   <h3 className="text-xl font-bold">Programming Languages</h3>
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-4">
                   {[
                     { name: "JS / TypeScript", icon: Terminal },
                     { name: "Dart", icon: Smartphone },
                     { name: "Swift", icon: Code2 },
                     { name: "Kotlin", icon: Layers }
                   ].map((item) => (
-                    <div key={item.name} className="flex items-center gap-3 p-3.5 rounded-2xl bg-muted/30 hover:bg-muted/70 transition-all border border-border/10">
-                      <item.icon size={18} className="text-primary" />
-                      <span className="font-medium text-xs tracking-wide">{item.name}</span>
+                    <div key={item.name} className="relative group">
+                      <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-muted/30 hover:bg-muted/70 transition-all border border-border/10 cursor-help">
+                        <item.icon size={18} className="text-primary" />
+                        <span className="font-medium text-xs tracking-wide">{item.name}</span>
+                      </div>
+                      {/* Interactive Tooltip */}
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 w-52 bg-zinc-950 dark:bg-zinc-900 text-zinc-100 dark:text-zinc-200 border border-zinc-800 text-[10px] p-2.5 rounded-xl shadow-2xl z-50 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 pointer-events-none transition-all duration-200 text-center leading-normal font-mono">
+                        {item.name === "JS / TypeScript" && "Used for Node.js backends & React/Next.js frontends."}
+                        {item.name === "Dart" && "Primary language for Flutter mobile applications."}
+                        {item.name === "Swift" && "Used for native iOS integrations & platform channels."}
+                        {item.name === "Kotlin" && "Used for native Android bridges & background services."}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -272,10 +281,22 @@ export default function Skills() {
                   <h3 className="text-xl font-bold">Data & Backend</h3>
                 </div>
                 <div className="flex flex-wrap gap-2.5">
-                  {["Firebase", "Supabase", "MongoDB", "PostgreSQL", "Node.js"].map((db) => (
-                    <span key={db} className="px-4 py-2 bg-background border border-border/50 hover:border-primary/45 rounded-full text-xs font-semibold hover:text-primary transition-all duration-300 cursor-default">
-                      {db}
-                    </span>
+                  {[
+                    { name: "Firebase", desc: "Auth, Firestore, Cloud Messaging & Analytics." },
+                    { name: "Supabase", desc: "Postgres database, Edge Functions & real-time sync." },
+                    { name: "MongoDB", desc: "Document storage for Node.js APIs & scrapers." },
+                    { name: "PostgreSQL", desc: "Relational modeling, analytical queries & views." },
+                    { name: "Node.js", desc: "Express / Koa API frameworks & scraping workers." }
+                  ].map((db) => (
+                    <div key={db.name} className="relative group">
+                      <span className="px-4 py-2 bg-background border border-border/50 hover:border-primary/45 rounded-full text-xs font-semibold hover:text-primary transition-all duration-300 cursor-help block">
+                        {db.name}
+                      </span>
+                      {/* Interactive Tooltip */}
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 w-52 bg-zinc-950 dark:bg-zinc-900 text-zinc-100 dark:text-zinc-200 border border-zinc-800 text-[10px] p-2.5 rounded-xl shadow-2xl z-50 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 pointer-events-none transition-all duration-200 text-center leading-normal font-mono">
+                        {db.desc}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </CardContent>
@@ -297,8 +318,21 @@ export default function Skills() {
                     <h3 className="font-bold text-sm">Workflow</h3>
                  </div>
                  <div className="flex flex-wrap gap-2">
-                    {["Git", "CI/CD", "Docker", "Agile"].map(t => (
-                      <Badge key={t} variant="outline" className="border-accent/20 bg-accent/5 text-accent text-[9px] font-bold rounded-full px-2.5">{t}</Badge>
+                    {[
+                      { name: "Git", desc: "Version control, multi-dev merges & pull reviews." },
+                      { name: "CI/CD", desc: "GitHub Actions, Fastlane & TestFlight pipelines." },
+                      { name: "Docker", desc: "Containerizing web services & local databases." },
+                      { name: "Agile", desc: "Daily scrums, Jira tracking & sprint scopes." }
+                    ].map(t => (
+                      <div key={t.name} className="relative group">
+                        <Badge variant="outline" className="border-accent/20 bg-accent/5 text-accent text-[9px] font-bold rounded-full px-2.5 cursor-help">
+                          {t.name}
+                        </Badge>
+                        {/* Interactive Tooltip */}
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 w-44 bg-zinc-950 dark:bg-zinc-900 text-zinc-100 dark:text-zinc-200 border border-zinc-800 text-[10px] p-2 rounded-xl shadow-2xl z-50 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 pointer-events-none transition-all duration-200 text-center leading-normal font-mono">
+                          {t.desc}
+                        </div>
+                      </div>
                     ))}
                  </div>
               </CardContent>

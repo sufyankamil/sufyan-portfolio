@@ -24,7 +24,7 @@ export function ScrollParallax({
   const x = useTransform(scrollY, [0, 800], [0, xOffset]);
 
   return (
-    <motion.div style={{ y, x, ...style }} className={className}>
+    <motion.div style={{ y, x, willChange: "transform", ...style }} className={className}>
       {children}
     </motion.div>
   );

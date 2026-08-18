@@ -4,7 +4,6 @@ import Contact from "@/components/contact";
 import Experience from "@/components/experience";
 import Footer from "@/components/footer";
 import Hero from "@/components/hero";
-import InteractionSandbox from "@/components/interaction-sandbox";
 import Navbar from "@/components/navbar";
 import Projects from "@/components/projects";
 import Skills from "@/components/skills";
@@ -30,8 +29,6 @@ export default function Home() {
         <Skills />
         <div className="border-t border-border/20" />
         <Experience />
-        <div className="border-t border-border/20" />
-        <InteractionSandbox />
         <div className="border-t border-border/20" />
         <Blog />
         <div className="border-t border-border/20" />

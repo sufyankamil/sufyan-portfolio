@@ -98,6 +98,15 @@ export default function Hero() {
   const mouseY = useMotionValue(0);
   const [deviceType, setDeviceType] = useState<"mobile" | "tablet" | "desktop">("mobile");
   const [isIntroActive, setIsIntroActive] = useState(true);
+  const words = ["interactive UIs", "next-gen apps", "full-stack webs", "cloud pipelines"];
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % words.length);
+    }, 2800);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const delay = isIntroActive ? 1500 : 5500;
@@ -160,22 +169,23 @@ export default function Hero() {
 
   const renderScreenContent = (device: "mobile" | "tablet" | "desktop", isXL: boolean) => {
     return (
-      <div className="relative w-full h-full bg-zinc-900 overflow-hidden flex flex-col justify-end p-5 text-white">
-        <Image
-          src="/images/profile.png"
-          alt="Sufyan Kamil"
-          fill
-          className="object-cover object-top filter brightness-[0.88] transition-transform duration-700 group-hover:scale-105"
-          priority
-        />
+      <div className="relative w-full h-full bg-zinc-950 overflow-hidden flex flex-col justify-end p-5 text-white">
+        {/* Sleek Typographic "Coming Soon" Placeholder */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-zinc-900 to-zinc-950 select-none p-4 text-center">
+          <div className="absolute w-32 h-32 rounded-full bg-primary/15 blur-3xl animate-pulse" />
+          <span className="text-[9px] md:text-[10px] font-bold text-primary tracking-widest uppercase font-mono mb-2">Preview</span>
+          <span className="text-xl md:text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
+            Coming Soon...
+          </span>
+        </div>
         {/* Screen Shadows & Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
 
         {/* Profile overlay details inside mock screen */}
         <div className={`relative z-20 text-white select-none text-left ${isXL ? "space-y-3 p-2" : "space-y-2"}`}>
           <div className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-semibold tracking-wide ${isXL ? "text-[11px]" : "text-[9px]"}`}>
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
-            ACTIVE — {device.toUpperCase()} MODE
+            ACTIVE — {device.toUpperCase()}
           </div>
           <div>
             <h3 className={`font-bold tracking-tight leading-tight ${isXL ? "text-2xl" : "text-lg"}`}>Sufyan Kamil</h3>
@@ -348,10 +358,21 @@ export default function Hero() {
               >
                 Software Engineer | Mobile Engineer
               </motion.div>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight">
-                Building{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                  innovative solutions
+              <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight flex flex-wrap items-center">
+                Building&nbsp;
+                <span className="inline-flex relative h-[1.1em] min-w-[290px] sm:min-w-[360px] md:min-w-[460px] lg:min-w-[620px] overflow-hidden align-bottom">
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={wordIndex}
+                      initial={{ y: 35, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -35, opacity: 0 }}
+                      transition={{ duration: 0.45, ease: "easeInOut" }}
+                      className="absolute left-0 text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent whitespace-nowrap"
+                    >
+                      {words[wordIndex]}
+                    </motion.span>
+                  </AnimatePresence>
                 </span>{" "}
                 for mobile & web
               </h1>

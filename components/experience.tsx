@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import { Award, Briefcase, Calendar, ChevronDown, GraduationCap, Trophy } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const experiences = [
   {
@@ -71,6 +72,23 @@ const certifications = [
 
 export default function Experience() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0); // Default expand first job
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: true,
+    slidesToScroll: 1,
+  });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    setScrollSnaps(emblaApi.scrollSnapList());
+    const onSelect = () => {
+      setSelectedIndex(emblaApi.selectedScrollSnap());
+    };
+    emblaApi.on("select", onSelect);
+    onSelect();
+  }, [emblaApi]);
 
   return (
     <section id="experience" className="py-24 bg-muted/20 relative overflow-hidden">
@@ -123,27 +141,38 @@ export default function Experience() {
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       className="relative"
                     >
-                      {/* Timeline dot */}
-                      <span className={`absolute -left-[35px] md:-left-[43px] top-7 w-4 h-4 rounded-full border-2 border-background transition-colors duration-300 ${
-                        isExpanded ? "bg-primary" : "bg-zinc-400 dark:bg-zinc-700"
-                      }`} />
+                      {/* Interactive pulsing Timeline dot */}
+                      <div className="absolute -left-[37px] md:-left-[45px] top-6.5 z-20 flex items-center justify-center w-5 h-5">
+                        {isExpanded ? (
+                          <div className="relative flex items-center justify-center">
+                            <span className="animate-ping absolute inline-flex h-4 w-4 rounded-full bg-primary/45 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-primary border-2 border-background" />
+                          </div>
+                        ) : (
+                          <span className="block w-3.5 h-3.5 rounded-full border-2 border-background bg-zinc-400 dark:bg-zinc-700 transition-colors duration-300 group-hover:bg-primary/50" />
+                        )}
+                      </div>
 
                       <Card 
-                        className={`overflow-hidden border border-border/40 bg-card/40 backdrop-blur-md rounded-2xl hover:border-primary/30 transition-all duration-300 group cursor-pointer shadow-md ${
-                          isExpanded ? "shadow-lg border-primary/25 bg-card/65" : ""
+                        className={`overflow-hidden border border-border/40 bg-card/30 dark:bg-zinc-900/10 backdrop-blur-md rounded-2xl hover:border-primary/30 transition-all duration-500 group cursor-pointer shadow-md relative ${
+                          isExpanded ? "shadow-xl border-primary/30 bg-card/60 dark:bg-zinc-900/30 ring-1 ring-primary/10" : ""
                         }`}
                         onClick={() => setExpandedIndex(isExpanded ? null : index)}
                       >
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        {/* Hover Gradient Border top bar */}
+                        <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
                         <CardContent className="p-6 md:p-8">
                           <div className="flex flex-wrap justify-between items-start mb-4 gap-4">
                             <div>
-                              <h4 className="text-xl font-bold group-hover:text-primary transition-colors leading-tight">{exp.title}</h4>
+                              <h4 className="text-xl font-bold group-hover:text-primary transition-colors duration-300 leading-tight tracking-tight">
+                                {exp.title}
+                              </h4>
                               <p className="text-primary font-semibold text-sm mt-1">{exp.company}</p>
                             </div>
                             <div className="flex items-center gap-3">
                               <Badge variant="secondary" className="bg-primary/5 text-primary border-primary/10 px-3 py-1 font-mono text-[10px] rounded-full">
-                                <Calendar className="mr-1.5 h-3 w-3" /> {exp.period}
+                                <Calendar className="mr-1.5 h-3 w-3 inline-block" /> {exp.period}
                               </Badge>
                               <motion.div
                                 animate={{ rotate: isExpanded ? 180 : 0 }}
@@ -165,16 +194,16 @@ export default function Experience() {
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                transition={{ duration: 0.35, ease: "easeInOut" }}
+                                transition={{ duration: 0.4, ease: "easeInOut" }}
                                 className="overflow-hidden border-t border-border/20 pt-4 mt-4"
                               >
-                                <p className="font-bold text-[10px] uppercase tracking-widest text-muted-foreground mb-3">
-                                  Key Achievements
+                                <p className="font-bold text-xs uppercase tracking-widest text-primary mb-4 font-mono">
+                                  Key Achievements & Accomplishments
                                 </p>
-                                <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 text-muted-foreground">
+                                <ul className="flex flex-col gap-3 text-muted-foreground">
                                   {exp.achievements.map((achievement, i) => (
-                                    <li key={i} className="flex items-start gap-2 text-xs leading-relaxed">
-                                      <span className="text-primary mt-1 select-none">•</span>
+                                    <li key={i} className="flex items-start gap-2.5 text-sm leading-relaxed hover:text-foreground transition-colors duration-300">
+                                      <span className="text-primary mt-1 select-none flex-shrink-0">•</span>
                                       <span>{achievement}</span>
                                     </li>
                                   ))}
@@ -233,31 +262,44 @@ export default function Experience() {
                 </div>
                 <h3 className="text-2xl font-bold tracking-tight">Certifications</h3>
               </div>
-              <div className="space-y-4">
-                {certifications.map((cert, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.08 }}
-                  >
-                    <Card className="overflow-hidden border border-border/40 bg-card/30 rounded-2xl hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow">
-                      <CardContent className="p-5">
-                        <div className="flex justify-between items-start mb-2 gap-2">
-                          <h4 className="font-bold text-sm leading-snug">{cert.title}</h4>
-                          <span className="text-[10px] font-mono bg-muted dark:bg-zinc-800/50 px-2 py-0.5 rounded text-muted-foreground border border-border/30">
-                            {cert.date}
-                          </span>
-                        </div>
-                        <p className="text-primary text-xs font-semibold mb-2">{cert.issuer}</p>
-                        <p className="text-muted-foreground text-xs leading-relaxed">
-                          {cert.description}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
+              <div className="relative">
+                {/* Embla Viewport */}
+                <div className="overflow-hidden cursor-grab active:cursor-grabbing rounded-2xl border border-border/40 bg-card/30" ref={emblaRef}>
+                  <div className="flex">
+                    {certifications.map((cert, index) => (
+                      <div key={index} className="flex-[0_0_100%] min-w-0 p-1">
+                        <Card className="border-0 bg-transparent shadow-none">
+                          <CardContent className="p-6">
+                            <div className="flex justify-between items-start mb-3 gap-2">
+                              <h4 className="font-extrabold text-sm leading-snug text-foreground">{cert.title}</h4>
+                              <span className="text-[10px] font-mono bg-primary/10 text-primary px-2.5 py-0.5 rounded-full border border-primary/20 flex-shrink-0">
+                                {cert.date}
+                              </span>
+                            </div>
+                            <p className="text-primary text-xs font-semibold mb-3">{cert.issuer}</p>
+                            <p className="text-muted-foreground text-xs leading-relaxed">
+                              {cert.description}
+                            </p>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Pagination Dots */}
+                <div className="flex justify-center gap-1.5 mt-4">
+                  {scrollSnaps.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => emblaApi && emblaApi.scrollTo(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === selectedIndex ? "bg-primary w-5" : "bg-muted"
+                      }`}
+                      aria-label={`Go to slide ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
 

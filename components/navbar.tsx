@@ -28,12 +28,16 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const [showResume, setShowResume] = useState(false);
   const [navbarHeight, setNavbarHeight] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      const homeElem = document.getElementById("home");
+      const threshold = homeElem ? homeElem.offsetTop - 200 : window.innerHeight * 1.5;
+      setIsVisible(window.scrollY >= threshold);
+      setScrolled(window.scrollY > threshold + 20);
     };
 
     // Get the navbar height after component mounts
@@ -42,7 +46,8 @@ export default function Navbar() {
       setNavbarHeight(navbar.offsetHeight);
     }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -98,10 +103,15 @@ export default function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ${
+          isVisible
+            ? "translate-y-0 opacity-100 pointer-events-auto"
+            : "-translate-y-full opacity-0 pointer-events-none"
+        } ${
+          scrolled
             ? "bg-background/80 backdrop-blur-md shadow-sm"
             : "bg-transparent"
-          }`}
+        }`}
       >
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">

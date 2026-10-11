@@ -97,7 +97,7 @@ export default function Hero() {
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const [deviceType, setDeviceType] = useState<"mobile" | "tablet" | "desktop">("mobile");
-  const [isIntroActive, setIsIntroActive] = useState(true);
+  const [isIntroActive, setIsIntroActive] = useState(false);
   const words = ["interactive UIs", "next-gen apps", "full-stack webs", "cloud pipelines"];
   const [wordIndex, setWordIndex] = useState(0);
 

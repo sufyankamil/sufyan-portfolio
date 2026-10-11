@@ -3,6 +3,7 @@ import Blog from "@/components/blog";
 import Contact from "@/components/contact";
 import Experience from "@/components/experience";
 import Footer from "@/components/footer";
+import { GateExperience } from "@/components/three/GateExperience";
 import Hero from "@/components/hero";
 import Navbar from "@/components/navbar";
 import Projects from "@/components/projects";
@@ -20,6 +21,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main>
+        <GateExperience />
         <Hero />
         <div className="border-t border-border/20" />
         <About />

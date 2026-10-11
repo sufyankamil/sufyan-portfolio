@@ -3,28 +3,27 @@
 import { useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { Code2, Cpu, Database, Layers, Layout, ShieldCheck, Smartphone, Terminal, Zap } from "lucide-react";
+import { Code2, Database, Layers, ShieldCheck, Smartphone, Terminal, Zap } from "lucide-react";
 import Image from "next/image";
 
 const skills = [
   {
     category: "Programming Languages",
     items: [
+      { name: "TypeScript", level: 92 },
       { name: "Dart", level: 95 },
       { name: "JavaScript", level: 90 },
       { name: "Swift", level: 80 },
-      { name: "Kotlin", level: 80 },
     ],
   },
   {
     category: "Mobile & Web Development",
     items: [
+      { name: "Next.js", level: 92 },
+      { name: "React / React 19", level: 90 },
       { name: "Flutter", level: 95 },
-      { name: "React Native", level: 85 },
-      { name: "HTML/CSS", level: 90 },
-      { name: "Node.js", level: 85 },
+      { name: "React Native", level: 88 },
     ],
   },
   {
@@ -90,13 +89,13 @@ const technologies = [
   },
 ];
 
-function BentoCard({ 
-  children, 
-  className = "", 
-  glowColor = "rgba(var(--primary-rgb), 0.15)" 
-}: { 
-  children: React.ReactNode; 
-  className?: string; 
+function BentoCard({
+  children,
+  className = "",
+  glowColor = "rgba(var(--primary-rgb), 0.15)"
+}: {
+  children: React.ReactNode;
+  className?: string;
   glowColor?: string;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -165,14 +164,14 @@ export default function Skills() {
             Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Ecosystem</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            A comprehensive engineering toolkit focused on building high-performance cross-platform 
+            A comprehensive engineering toolkit focused on building high-performance cross-platform
             mobile applications, scalable web solutions, and clean, modular systems.
           </p>
         </motion.div>
- 
+
         {/* Bento Grid layout */}
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-6 mb-20">
-          
+
           {/* Main Skill: Software & Mobile Engineering */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -189,7 +188,7 @@ export default function Skills() {
                   <h3 className="text-2xl font-bold">Software & Mobile Engineering</h3>
                 </div>
                 <p className="text-muted-foreground mb-8 text-base leading-relaxed">
-                  Extensive experience designing robust cross-platform mobile apps, 
+                  Extensive experience designing robust cross-platform mobile apps,
                   implementing clean architecture, and building production-ready web portals.
                 </p>
                 <div className="space-y-6 mt-auto">
@@ -204,7 +203,7 @@ export default function Skills() {
                         <span className="text-primary font-bold text-sm">{skill.level}%</span>
                       </div>
                       <div className="h-2 bg-muted rounded-full overflow-hidden relative">
-                        <motion.div 
+                        <motion.div
                           className="h-full bg-primary rounded-full relative"
                           initial={{ width: 0 }}
                           whileInView={{ width: `${skill.level}%` }}
@@ -221,7 +220,7 @@ export default function Skills() {
               </CardContent>
             </BentoCard>
           </motion.div>
- 
+
           {/* Programming Languages */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -238,7 +237,7 @@ export default function Skills() {
                   </div>
                   <h3 className="text-xl font-bold">Programming Languages</h3>
                 </div>
-                  <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   {[
                     { name: "JS / TypeScript", icon: Terminal },
                     { name: "Dart", icon: Smartphone },
@@ -263,7 +262,7 @@ export default function Skills() {
               </CardContent>
             </BentoCard>
           </motion.div>
- 
+
           {/* Backend & Databases */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -302,7 +301,7 @@ export default function Skills() {
               </CardContent>
             </BentoCard>
           </motion.div>
- 
+
           {/* Extra: Tools */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -313,32 +312,32 @@ export default function Skills() {
           >
             <BentoCard className="h-full">
               <CardContent className="p-6">
-                 <div className="flex items-center gap-3 mb-4 text-accent">
-                    <ShieldCheck size={20} />
-                    <h3 className="font-bold text-sm">Workflow</h3>
-                 </div>
-                 <div className="flex flex-wrap gap-2">
-                    {[
-                      { name: "Git", desc: "Version control, multi-dev merges & pull reviews." },
-                      { name: "CI/CD", desc: "GitHub Actions, Fastlane & TestFlight pipelines." },
-                      { name: "Docker", desc: "Containerizing web services & local databases." },
-                      { name: "Agile", desc: "Daily scrums, Jira tracking & sprint scopes." }
-                    ].map(t => (
-                      <div key={t.name} className="relative group">
-                        <Badge variant="outline" className="border-accent/20 bg-accent/5 text-accent text-[9px] font-bold rounded-full px-2.5 cursor-help">
-                          {t.name}
-                        </Badge>
-                        {/* Interactive Tooltip */}
-                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 w-44 bg-zinc-950 dark:bg-zinc-900 text-zinc-100 dark:text-zinc-200 border border-zinc-800 text-[10px] p-2 rounded-xl shadow-2xl z-50 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 pointer-events-none transition-all duration-200 text-center leading-normal font-mono">
-                          {t.desc}
-                        </div>
+                <div className="flex items-center gap-3 mb-4 text-accent">
+                  <ShieldCheck size={20} />
+                  <h3 className="font-bold text-sm">Workflow</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { name: "Git", desc: "Version control, multi-dev merges & pull reviews." },
+                    { name: "CI/CD", desc: "GitHub Actions, Fastlane & TestFlight pipelines." },
+                    { name: "Docker", desc: "Containerizing web services & local databases." },
+                    { name: "Agile", desc: "Daily scrums, Jira tracking & sprint scopes." }
+                  ].map(t => (
+                    <div key={t.name} className="relative group">
+                      <Badge variant="outline" className="border-accent/20 bg-accent/5 text-accent text-[9px] font-bold rounded-full px-2.5 cursor-help">
+                        {t.name}
+                      </Badge>
+                      {/* Interactive Tooltip */}
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 w-44 bg-zinc-950 dark:bg-zinc-900 text-zinc-100 dark:text-zinc-200 border border-zinc-800 text-[10px] p-2 rounded-xl shadow-2xl z-50 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 pointer-events-none transition-all duration-200 text-center leading-normal font-mono">
+                        {t.desc}
                       </div>
-                    ))}
-                 </div>
+                    </div>
+                  ))}
+                </div>
               </CardContent>
             </BentoCard>
           </motion.div>
- 
+
           {/* Continuous Learning */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -349,22 +348,22 @@ export default function Skills() {
           >
             <BentoCard className="h-full border-dashed">
               <CardContent className="p-6 flex items-center justify-between gap-6">
-                 <div className="space-y-1">
-                    <h3 className="font-bold text-base">Continuous Learning</h3>
-                    <p className="text-xs text-muted-foreground italic leading-relaxed">"Always exploring new architectural patterns and cloud-native solutions."</p>
-                 </div>
-                 <Zap className="text-primary/40 animate-pulse flex-shrink-0" size={32} />
+                <div className="space-y-1">
+                  <h3 className="font-bold text-base">Continuous Learning</h3>
+                  <p className="text-xs text-muted-foreground italic leading-relaxed">"Always exploring new architectural patterns and cloud-native solutions."</p>
+                </div>
+                <Zap className="text-primary/40 animate-pulse flex-shrink-0" size={32} />
               </CardContent>
             </BentoCard>
           </motion.div>
- 
+
         </div>
- 
+
         {/* Infinite Sliding Marquees */}
         <div className="border-t border-border/10 pt-16 overflow-hidden flex flex-col gap-6 relative">
           {/* Row 1: Left-scrolling marquee */}
           <div className="flex w-full overflow-hidden select-none pointer-events-none mask-image">
-            <motion.div 
+            <motion.div
               className="flex gap-12 flex-shrink-0"
               animate={{ x: [0, -400] }}
               transition={{
@@ -389,7 +388,7 @@ export default function Skills() {
 
           {/* Row 2: Right-scrolling marquee */}
           <div className="flex w-full overflow-hidden select-none pointer-events-none mask-image">
-            <motion.div 
+            <motion.div
               className="flex gap-12 flex-shrink-0"
               animate={{ x: [-400, 0] }}
               transition={{

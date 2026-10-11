@@ -12,6 +12,16 @@ import { useRef, useState } from "react";
 const projects = [
   {
     id: 1,
+    title: "Pathways DXB — Education Marketplace Portal",
+    description:
+      "Dubai-focused education marketplace platform connecting students, parents, and institutions. Built the web portal featuring verified school/university microsites, multi-tier admission workflows, status tracking, and admin verification spine within a high-performance Turborepo monorepo.",
+    image: "/projects/pathways_dxb_cover.jpg",
+    tags: ["Next.js 16", "React 19", "Tailwind CSS v4", "Redux Toolkit", "Turborepo", "TypeScript"],
+    category: "web",
+    featured: true,
+  },
+  {
+    id: 2,
     title: "TransitMS — Driver / Parent / Para",
     description:
       "Shared React Native app with role-specific builds for drivers, parents, and paras—covering routes, live GPS, attendance, and real-time trip coordination from dispatch to drop-off.",
@@ -21,7 +31,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 2,
+    id: 3,
     title: "Transit Rider — Passenger App",
     description:
       "Passenger-facing React Native app for non-emergency medical transport—book trips, track live status on a map, and manage visits, history, and support.",
@@ -31,7 +41,7 @@ const projects = [
     featured: false,
   },
   {
-    id: 3,
+    id: 4,
     title: "Transit Web Portal",
     description:
       "Next.js operations dashboard for school districts—route planning, live trip monitoring, fleet and student management, and admin workflows for safe daily transport.",
@@ -41,7 +51,7 @@ const projects = [
     featured: true,
   },
   {
-    id: 4,
+    id: 5,
     title: "Donor Connect",
     description:
       "A mobile application connecting blood donors with recipients, featuring real-time notifications and location-based matching.",
@@ -52,7 +62,7 @@ const projects = [
     featured: false,
   },
   {
-    id: 5,
+    id: 6,
     title: "OAuth Web App",
     description:
       "A secure authentication system built with Flutter for web, implementing OAuth protocols for seamless third-party authentication.",
@@ -62,7 +72,7 @@ const projects = [
     featured: false,
   },
   {
-    id: 6,
+    id: 7,
     title: "SaaS-ScrapeFlow",
     description:
       "A full-stack web application for automated web scraping, data extraction, and analysis with customizable workflows.",
@@ -73,7 +83,7 @@ const projects = [
     featured: false,
   },
   {
-    id: 7,
+    id: 8,
     title: "CivicNet",
     description:
       "A Flutter application designed to connect, help, and build community, empowering users to engage in civic activities.",
@@ -84,7 +94,7 @@ const projects = [
     featured: false,
   },
   {
-    id: 8,
+    id: 9,
     title: "CryptoTracker",
     description:
       "A comprehensive cryptocurrency tracking application offering real-time market data, portfolio management, and price alerts.",

@@ -13,8 +13,9 @@ const experiences = [
     company: "Lauren Information Technologies Pvt. Ltd.",
     period: "July 2023 - Present",
     description:
-      "Developing scalable cross-platform applications and web systems using Flutter, React Native, Next.js, and Node.js, focusing on clean architecture, real-time telemetry, and logistics workflows.",
+      "Developing scalable web portals and cross-platform applications using Next.js, React, React Native, Flutter, and Node.js within modern monorepo architectures, focusing on clean architecture, education marketplaces, and logistics workflows.",
     achievements: [
+      "Engineered the Pathways DXB Web Portal (Next.js 16, React 19, Tailwind CSS v4, Redux Toolkit, Turborepo)—delivering verified school/university microsites, multi-tier admissions workflows, and administrative verification dashboards",
       "Architected cross-platform mobile apps using Flutter & React Native, improving system performance and offline capabilities",
       "Built TransitMS, a modular React Native system with dynamic configurations for role-specific builds (drivers, parents, paras)—integrating live GPS telemetry and real-time synchronization",
       "Developed Transit Rider, a passenger app for NEMT booking, route optimization, and live maps tracking",

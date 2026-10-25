@@ -1,2 +1,6 @@
 allowBuilds:
   sharp: true
+
+# pnpm 10 (used by Cloudflare Pages) reads this key instead of allowBuilds
+onlyBuiltDependencies:
+  - sharp

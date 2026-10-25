@@ -127,11 +127,11 @@ export default function About() {
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4">About Me</h2>
           <p className="text-lg text-muted-foreground">
-            I'm a Software Engineer & Mobile Developer with a degree in Computer Engineering. I
-            have experience working across the full stack with a variety of technologies, including
-            TypeScript, JavaScript, React, Next.js, React Native, Flutter, Dart, Node.js,
-            MongoDB, Firebase, and Supabase. I specialize in designing scalable systems,
-            writing clean code, and solving complex architectural challenges.
+            I'm a Senior Software Engineer with a degree in Computer Engineering and 6+ years of
+            experience across AI, Fintech & Banking. I work across application architecture,
+            RESTful APIs, backend services, databases, authentication, cloud services, CI/CD and
+            third-party SDK integrations, with Flutter, React Native, Next.js, React, TypeScript
+            and Node.js as my core stack.
           </p>
         </motion.div>
 
@@ -190,15 +190,12 @@ export default function About() {
                 <h3 className="text-2xl font-bold tracking-tight">My Journey</h3>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                My journey spans across Frontend, Backend, Cloud, and Mobile
-                Development, evolving into a comprehensive Software Engineering skillset. I
-                have experience working with a variety of technologies, including
-                TypeScript, JavaScript, React, Next.js, React Native, Flutter, Node.js, and
-                Supabase. In my current role as a Software & Mobile Engineer
-                at Lauren Information Technologies, I build scalable cross-platform apps
-                and web portals, delivering mission-critical transportation
-                platforms including driver/parent/para apps, passenger booking,
-                and district admin portals.
+                I've built backend and mobile systems serving 300,000+ concurrent users at
+                99.9% uptime, and cut production defects by ~60% through modular architecture,
+                CI/CD and automated testing. At Lauren Information Technologies I build Axis
+                Bank internet banking features in Flutter for a 50M+ user base, a real-time
+                transportation platform in React Native and Next.js, and the web portal for a
+                Dubai education marketplace with AI-based institution matching.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 When I'm not coding, you can find me playing cricket or
@@ -208,15 +205,15 @@ export default function About() {
             <div className="lg:col-span-2 w-full">
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-6 rounded-2xl bg-primary/5 dark:bg-primary/10 border border-primary/10 flex flex-col items-center justify-center text-center shadow-inner hover:-translate-y-1 transition-all duration-300">
-                  <span className="text-4xl md:text-5xl font-extrabold text-primary mb-2 tracking-tight">4+</span>
+                  <span className="text-4xl md:text-5xl font-extrabold text-primary mb-2 tracking-tight">6+</span>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                     Years Experience
                   </span>
                 </div>
                 <div className="p-6 rounded-2xl bg-accent/5 dark:bg-accent/10 border border-accent/10 flex flex-col items-center justify-center text-center shadow-inner hover:-translate-y-1 transition-all duration-300">
-                  <span className="text-4xl md:text-5xl font-extrabold text-accent mb-2 tracking-tight">20+</span>
+                  <span className="text-4xl md:text-5xl font-extrabold text-accent mb-2 tracking-tight">50M+</span>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
-                    Projects Done
+                    Users Served
                   </span>
                 </div>
               </div>

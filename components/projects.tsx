@@ -4,7 +4,19 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
-import { Github, Smartphone, Globe as WebIcon, ArrowUpRight } from "lucide-react";
+import {
+  Github,
+  Smartphone,
+  Globe as WebIcon,
+  ArrowUpRight,
+  ExternalLink,
+  Lock,
+  ArrowLeftRight,
+  CreditCard,
+  ReceiptText,
+  ShieldAlert,
+  ShieldCheck,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
@@ -13,19 +25,32 @@ const projects = [
   {
     id: 1,
     title: "Pathways DXB — Education Marketplace Portal",
+    client: true,
     description:
-      "Dubai-focused education marketplace platform connecting students, parents, and institutions. Built the web portal featuring verified school/university microsites, multi-tier admission workflows, status tracking, and admin verification spine within a high-performance Turborepo monorepo.",
-    image: "/projects/pathways_dxb_cover.jpg",
-    tags: ["Next.js 16", "React 19", "Tailwind CSS v4", "Redux Toolkit", "Turborepo", "TypeScript"],
+      "Web portal for a Dubai education marketplace targeting 400,000+ school and university students. AI-based matching recommends institutions from each user's fee range, course interests and location, alongside verified institution microsites, multi-stage admissions with status tracking, and admin approval workflows in a Turborepo monorepo.",
+    image: "/projects/pathways_dxb_cover.webp",
+    tags: ["Next.js 16", "React 19", "AI Matching", "Turborepo", "TypeScript", "Tailwind CSS v4"],
     category: "web",
     featured: true,
   },
   {
+    id: 10,
+    title: "Axis Bank — Internet Banking",
+    client: true,
+    description:
+      "Internet banking features in Flutter for India's 4th largest bank, serving a 50M+ user base. Covers OAuth authentication, fraud and dispute management and transaction flows, with encrypted API calls and secure on-device storage.",
+    mockup: "banking",
+    tags: ["Flutter", "OAuth", "Encrypted APIs", "Secure Storage", "Fintech"],
+    category: "mobile",
+    featured: false,
+  },
+  {
     id: 2,
     title: "TransitMS — Driver / Parent / Para",
+    client: true,
     description:
-      "Shared React Native app with role-specific builds for drivers, parents, and paras—covering routes, live GPS, attendance, and real-time trip coordination from dispatch to drop-off.",
-    image: "/projects/sentryms_cover.png",
+      "Shared React Native app with role-specific builds for drivers, parents, and paras—covering GPS tracking, trip management, pre-trip inspections, notifications, localization and maps across iOS and Android.",
+    image: "/projects/sentryms_cover.webp",
     tags: ["React Native", "Live GPS", "Role-based Builds", "Real-time Tracking"],
     category: "mobile",
     featured: true,
@@ -33,9 +58,10 @@ const projects = [
   {
     id: 3,
     title: "Transit Rider — Passenger App",
+    client: true,
     description:
       "Passenger-facing React Native app for non-emergency medical transport—book trips, track live status on a map, and manage visits, history, and support.",
-    image: "/projects/sentry_rider_cover.png",
+    image: "/projects/sentry_rider_cover.webp",
     tags: ["React Native", "Maps", "Trip Booking", "NEMT"],
     category: "mobile",
     featured: false,
@@ -43,9 +69,10 @@ const projects = [
   {
     id: 4,
     title: "Transit Web Portal",
+    client: true,
     description:
       "Next.js operations dashboard for school districts—route planning, live trip monitoring, fleet and student management, and admin workflows for safe daily transport.",
-    image: "/projects/sentryride_web_cover.png",
+    image: "/projects/sentryride_web_cover.webp",
     tags: ["Next.js", "React", "TypeScript", "Operations Dashboard"],
     category: "web",
     featured: true,
@@ -55,9 +82,8 @@ const projects = [
     title: "Donor Connect",
     description:
       "A mobile application connecting blood donors with recipients, featuring real-time notifications and location-based matching.",
-    image: "/projects/donor_connect_cover.png",
+    image: "/projects/donor_connect_cover.webp",
     tags: ["Flutter", "Firebase", "Google Maps API", "Real-time Database"],
-    github: "https://github.com/sufyankamil/donor-connect",
     category: "mobile",
     featured: false,
   },
@@ -66,7 +92,7 @@ const projects = [
     title: "OAuth Web App",
     description:
       "A secure authentication system built with Flutter for web, implementing OAuth protocols for seamless third-party authentication.",
-    image: "/projects/oauth_web_app_cover.png",
+    image: "/projects/oauth_web_app_cover.webp",
     tags: ["Flutter Web", "OAuth", "Firebase Auth", "REST API"],
     category: "web",
     featured: false,
@@ -76,7 +102,7 @@ const projects = [
     title: "SaaS-ScrapeFlow",
     description:
       "A full-stack web application for automated web scraping, data extraction, and analysis with customizable workflows.",
-    image: "/projects/saas_scrapeflow_cover.png",
+    image: "/projects/saas_scrapeflow_cover.webp",
     tags: ["React", "Node.js", "MongoDB", "REST API"],
     github: "https://github.com/sufyankamil/SaaS-ScrapeFlow",
     category: "web",
@@ -87,9 +113,11 @@ const projects = [
     title: "CivicNet",
     description:
       "A Flutter application designed to connect, help, and build community, empowering users to engage in civic activities.",
-    image: "/projects/civicnet_feature_graphic.png",
+    image: "/projects/civicnet_feature_graphic.webp",
     tags: ["Flutter", "Dart", "Community", "Supabase", "Firebase"],
     github: "https://github.com/sufyankamil/ai-civicnet",
+    live: "https://apps.apple.com/app/id6761416586",
+    liveLabel: "App Store",
     category: "mobile",
     featured: false,
   },
@@ -98,9 +126,8 @@ const projects = [
     title: "CryptoTracker",
     description:
       "A comprehensive cryptocurrency tracking application offering real-time market data, portfolio management, and price alerts.",
-    image: "/projects/crypto_tracker_cover.png",
+    image: "/projects/crypto_tracker_cover.webp",
     tags: ["React Native", "Redux", "CoinGecko API", "Charts"],
-    github: "https://github.com/sufyankamil",
     category: "mobile",
     featured: false,
   },
@@ -291,12 +318,16 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
                 style={{ x: imgX, y: imgY, scale: 1.1 }}
                 className="absolute inset-0 w-full h-full opacity-20 pointer-events-none blur-2xl rounded-[2rem]"
               >
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt=""
-                  fill
-                  className="object-cover"
-                />
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt=""
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 to-cyan-500" />
+                )}
               </motion.div>
 
               {project.category === "mobile" ? (
@@ -308,8 +339,11 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
                   </div>
                   {/* Screen image */}
                   <div className="relative w-full h-full overflow-hidden bg-zinc-950">
+                    {project.mockup === "banking" ? (
+                      <BankingMockup />
+                    ) : (
                     <Image
-                      src={project.image || "/placeholder.svg"}
+                      src={project.image}
                       alt={project.title}
                       fill
                       className={`transition-transform duration-700 group-hover:scale-105 ${
@@ -318,6 +352,7 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
                           : "object-cover object-top"
                       }`}
                     />
+                    )}
                   </div>
                 </div>
               ) : (
@@ -329,13 +364,17 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
                     <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
                     <div className="w-2 h-2 rounded-full bg-green-500/60" />
                     <div className="ml-3 flex-grow max-w-[140px] bg-muted/40 rounded text-[8px] text-muted-foreground/80 px-2 py-0.5 text-center truncate font-mono select-none">
-                      {project.title.toLowerCase().replace(/[^a-z0-9]/g, "")}.dev
+                      {project.live
+                        ? new URL(project.live).hostname
+                        : project.client
+                          ? "private client project"
+                          : "web app"}
                     </div>
                   </div>
                   {/* Web preview image */}
                   <div className="relative aspect-[1.6/1] w-full overflow-hidden">
                     <Image
-                      src={project.image || "/placeholder.svg"}
+                      src={project.image}
                       alt={project.title}
                       fill
                       className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
@@ -379,19 +418,87 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
                 ))}
               </div>
 
-              {project.github && (
-                <div className="flex gap-3 pt-2" style={{ transform: "translateZ(25px)" }}>
+              <div className="flex flex-wrap items-center gap-3 pt-2" style={{ transform: "translateZ(25px)" }}>
+                {project.live && (
+                  <Button asChild size="sm" className="rounded-full group/btn shadow-sm transition-all duration-300">
+                    <Link href={project.live} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" /> {project.liveLabel ?? "Live"}
+                    </Link>
+                  </Button>
+                )}
+                {project.github && (
                   <Button asChild size="sm" variant="outline" className="rounded-full border-primary/20 hover:bg-primary hover:text-primary-foreground group/btn shadow-sm transition-all duration-300">
                     <Link href={project.github} target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" /> Code
                     </Link>
                   </Button>
-                </div>
-              )}
+                )}
+                {project.client && !project.live && (
+                  <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <Lock className="w-3.5 h-3.5" /> Client project · code under NDA
+                  </span>
+                )}
+              </div>
             </CardContent>
           </div>
         </Card>
       </motion.div>
     </motion.div>
+  );
+}
+
+// Generic banking UI for client work without an approved screenshot (no client branding)
+function BankingMockup() {
+  const actions = [
+    { label: "Transfer", icon: ArrowLeftRight },
+    { label: "Cards", icon: CreditCard },
+    { label: "Bills", icon: ReceiptText },
+    { label: "Disputes", icon: ShieldAlert },
+  ];
+  const transactions = [
+    { name: "UPI · Grocery", amount: "-₹1,240" },
+    { name: "Salary credit", amount: "+₹85,000" },
+    { name: "Card · Fuel", amount: "-₹2,100" },
+  ];
+
+  return (
+    <div className="absolute inset-0 flex flex-col gap-2.5 bg-gradient-to-b from-slate-900 to-zinc-950 px-3 pt-6 pb-3 text-white select-none">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-[7px] text-zinc-400">Good evening</p>
+          <p className="text-[10px] font-bold">Internet Banking</p>
+        </div>
+        <span className="flex items-center gap-0.5 rounded-full bg-emerald-500/15 px-1.5 py-0.5 text-[6px] font-semibold text-emerald-400">
+          <ShieldCheck className="h-2 w-2" /> OAuth 2.0
+        </span>
+      </div>
+
+      <div className="rounded-xl bg-gradient-to-br from-indigo-600 to-cyan-500 p-2.5 shadow-lg">
+        <p className="text-[7px] text-white/70">Savings •••• 4821</p>
+        <p className="mt-0.5 text-sm font-extrabold tracking-tight">₹2,45,180.00</p>
+        <p className="mt-1.5 text-[6px] text-white/60">Encrypted session · Secure storage</p>
+      </div>
+
+      <div className="grid grid-cols-4 gap-1">
+        {actions.map(({ label, icon: Icon }) => (
+          <div key={label} className="flex flex-col items-center gap-0.5 rounded-lg bg-white/5 py-1.5">
+            <Icon className="h-2.5 w-2.5 text-cyan-300" />
+            <span className="text-[5.5px] text-zinc-300">{label}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex-1 rounded-xl bg-white/5 p-2">
+        <p className="mb-1.5 text-[7px] font-semibold text-zinc-300">Recent transactions</p>
+        <div className="space-y-1.5">
+          {transactions.map((t) => (
+            <div key={t.name} className="flex items-center justify-between text-[6.5px]">
+              <span className="text-zinc-400">{t.name}</span>
+              <span className={t.amount.startsWith("+") ? "text-emerald-400" : "text-zinc-200"}>{t.amount}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }

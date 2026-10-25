@@ -20,6 +20,19 @@ const WalkCanvas = dynamic(
   }
 )
 
+const SKIP_KEY = "skip-3d-intro"
+
+// Phones and reduced-motion users get the portfolio directly (no 3MB model download)
+const LITE_QUERY = "(max-width: 767px), (prefers-reduced-motion: reduce)"
+
+function readSkipped() {
+  try {
+    return window.localStorage.getItem(SKIP_KEY) === "1"
+  } catch {
+    return false
+  }
+}
+
 interface GateExperienceProps {
   onComplete?: () => void
 }
@@ -28,8 +41,15 @@ export function GateExperience({ onComplete }: GateExperienceProps) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [progress, setProgress] = useState(0)
   const [hasEntered, setHasEntered] = useState(false)
+  const [enabled, setEnabled] = useState<boolean | null>(null)
 
   useEffect(() => {
+    const forced = new URLSearchParams(window.location.search).has("intro")
+    setEnabled(forced || (!window.matchMedia(LITE_QUERY).matches && !readSkipped()))
+  }, [])
+
+  useEffect(() => {
+    if (!enabled) return
     const handleScroll = () => {
       if (!containerRef.current) return
       const rect = containerRef.current.getBoundingClientRect()
@@ -72,19 +92,27 @@ export function GateExperience({ onComplete }: GateExperienceProps) {
       window.removeEventListener("scroll", handleScroll)
       window.removeEventListener("keydown", handleKeyDown)
     }
-  }, [hasEntered, onComplete])
+  }, [enabled, hasEntered, onComplete])
 
   const handleSkip = () => {
+    try {
+      window.localStorage.setItem(SKIP_KEY, "1")
+    } catch {}
     if (!containerRef.current) return
     const target = containerRef.current.offsetTop + containerRef.current.offsetHeight
     window.scrollTo({ top: target, behavior: "smooth" })
   }
 
+  if (enabled === false) return null
+
   return (
-    <section ref={containerRef} className="relative h-[200vh] w-full bg-[#06080e]">
+    <section
+      ref={containerRef}
+      className={`relative h-[200vh] w-full bg-[#06080e] ${enabled ? "block" : "hidden md:block motion-reduce:hidden"}`}
+    >
       {/* Sticky Fullscreen 3D Viewport */}
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <WalkCanvas progress={progress} />
+        {enabled && <WalkCanvas progress={progress} />}
 
         {/* Floating Skip to Portfolio button (Bottom-Right) */}
         <div className="absolute bottom-8 right-8 z-30 pointer-events-auto">
@@ -100,9 +128,9 @@ export function GateExperience({ onComplete }: GateExperienceProps) {
         {/* Initial Cinematic Hero Overlay (0% - 25% scroll) */}
         {progress < 0.25 && (
           <div className="absolute inset-x-0 bottom-12 flex flex-col items-center justify-center z-20 text-center pointer-events-none transition-opacity duration-500">
-            <h1 className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-2 drop-shadow-lg">
+            <p className="text-2xl md:text-4xl font-bold tracking-tight text-white mb-2 drop-shadow-lg">
               Sufyan Kamil
-            </h1>
+            </p>
             <p className="text-sm md:text-base text-white/60 mb-6 max-w-md px-4">
               Scroll down or use <span className="font-mono text-cyan-300">↓ / S</span> keys to step forward
             </p>

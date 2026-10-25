@@ -96,7 +96,7 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const [deviceType, setDeviceType] = useState<"mobile" | "tablet" | "desktop">("mobile");
+  const [deviceType, setDeviceType] = useState<"mobile" | "tablet">("mobile");
   const [isIntroActive, setIsIntroActive] = useState(false);
   const words = ["interactive UIs", "next-gen apps", "full-stack webs", "cloud pipelines"];
   const [wordIndex, setWordIndex] = useState(0);
@@ -111,11 +111,7 @@ export default function Hero() {
   useEffect(() => {
     const delay = isIntroActive ? 1500 : 5500;
     const interval = setInterval(() => {
-      setDeviceType((prev) => {
-        if (prev === "mobile") return "tablet";
-        if (prev === "tablet") return "desktop";
-        return "mobile";
-      });
+      setDeviceType((prev) => (prev === "mobile" ? "tablet" : "mobile"));
     }, delay);
     return () => clearInterval(interval);
   }, [isIntroActive]);
@@ -167,19 +163,31 @@ export default function Hero() {
     }
   };
 
-  const renderScreenContent = (device: "mobile" | "tablet" | "desktop", isXL: boolean) => {
+  const renderScreenContent = (device: "mobile" | "tablet", isXL: boolean) => {
     return (
-      <div className="relative w-full h-full bg-zinc-950 overflow-hidden flex flex-col justify-end p-5 text-white">
-        {/* Sleek Typographic "Coming Soon" Placeholder */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-zinc-900 to-zinc-950 select-none p-4 text-center">
-          <div className="absolute w-32 h-32 rounded-full bg-primary/15 blur-3xl animate-pulse" />
-          <span className="text-[9px] md:text-[10px] font-bold text-primary tracking-widest uppercase font-mono mb-2">Preview</span>
-          <span className="text-xl md:text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-            Coming Soon...
-          </span>
+      <div className="relative w-full h-full bg-gradient-to-b from-slate-800 via-zinc-900 to-zinc-950 overflow-hidden flex flex-col justify-end p-5 text-white">
+        {/* Soft studio glow behind the portrait */}
+        <div className="absolute left-1/2 top-[30%] -translate-x-1/2 -translate-y-1/2 w-3/4 aspect-square rounded-full bg-primary/25 blur-3xl" />
+
+        {/* Background-removed portrait, kept above the text block and faded out at the chest */}
+        <div
+          className={`absolute inset-x-0 ${device === "mobile" ? "top-10 bottom-[38%]" : "top-6 bottom-[34%]"}`}
+          style={{
+            maskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, black 70%, transparent 100%)",
+          }}
+        >
+          <Image
+            src="/images/sufyan-kamil.webp"
+            alt="Sufyan Kamil"
+            fill
+            priority={device === "mobile"}
+            sizes="320px"
+            className="object-contain object-bottom select-none drop-shadow-2xl"
+          />
         </div>
         {/* Screen Shadows & Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent z-10" />
 
         {/* Profile overlay details inside mock screen */}
         <div className={`relative z-20 text-white select-none text-left ${isXL ? "space-y-3 p-2" : "space-y-2"}`}>
@@ -189,7 +197,7 @@ export default function Hero() {
           </div>
           <div>
             <h3 className={`font-bold tracking-tight leading-tight ${isXL ? "text-2xl" : "text-lg"}`}>Sufyan Kamil</h3>
-            <p className={`font-mono text-zinc-400 ${isXL ? "text-xs" : "text-[10px]"}`}>SDE — Mobile & Cloud</p>
+            <p className={`font-mono text-zinc-400 ${isXL ? "text-xs" : "text-[10px]"}`}>Senior Software Engineer</p>
           </div>
           {/* Minimal Stack Badge details */}
           <div className="flex flex-wrap gap-1.5 pt-1">
@@ -290,27 +298,6 @@ export default function Hero() {
                   </div>
                 )}
  
-                {deviceType === "desktop" && (
-                  <div className="relative flex flex-col items-center w-full max-w-[34rem]" style={{ transformStyle: "preserve-3d" }}>
-                    <div className="relative w-full h-[20rem]" style={{ transformStyle: "preserve-3d" }}>
-                      {/* Metallic 3D Bezel Extrusions */}
-                      <div className="absolute inset-0 bg-zinc-800 rounded-t-xl" style={{ transform: "translateZ(-2px)" }} />
-                      <div className="absolute inset-0 bg-zinc-850 rounded-t-xl" style={{ transform: "translateZ(-4px)" }} />
-
-                      {/* Front Screen Card */}
-                      <div className="absolute inset-0 bg-zinc-950 rounded-t-xl p-2.5 border-t-4 border-x-4 border-zinc-800 shadow-2xl flex flex-col overflow-hidden" style={{ transform: "translateZ(0px)" }}>
-                        <div className="flex-1 rounded-t-lg overflow-hidden border border-zinc-850">
-                          {renderScreenContent("desktop", true)}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="w-[101.5%] h-4 bg-zinc-800 rounded-b-xl flex items-center justify-center border-b-2 border-zinc-700 shadow-md" style={{ transform: "translateZ(-2px)" }}>
-                      <div className="w-12 h-1 bg-zinc-900 rounded-full"></div>
-                    </div>
-                    <div className="w-16 h-8 bg-zinc-700 border-x border-zinc-600" style={{ transform: "translateZ(-4px)" }}></div>
-                    <div className="w-32 h-2 bg-zinc-800 rounded-t-lg border-t border-zinc-650" style={{ transform: "translateZ(-6px)" }}></div>
-                  </div>
-                )}
               </motion.div>
             </AnimatePresence>
           </div>
@@ -318,7 +305,7 @@ export default function Hero() {
       )}
 
       {/* Huge Background Typography (Layered Behind Content) */}
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 flex flex-col items-center pointer-events-none select-none opacity-[0.04] dark:opacity-[0.025] transition-opacity duration-300">
+      <div aria-hidden="true" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0 hidden md:flex flex-col items-center pointer-events-none select-none opacity-[0.04] dark:opacity-[0.025] transition-opacity duration-300">
         <span className="text-[14vw] font-extrabold tracking-tighter leading-none text-foreground text-center">
           SUFYAN
         </span>
@@ -356,7 +343,7 @@ export default function Hero() {
                 transition={{ delay: 0.2 }}
                 className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide border border-primary/20"
               >
-                Software Engineer | Mobile Engineer
+                Senior Software Engineer · Dubai, UAE
               </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight flex flex-wrap items-center">
                 Building&nbsp;
@@ -377,9 +364,10 @@ export default function Hero() {
                 for mobile & web
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                I'm a Software Engineer & Mobile Developer passionate about building elegant,
-                high-performance applications. Specializing in full-stack mobile, web, and
-                cross-platform technologies to bring complex ideas to life.
+                Senior Software Engineer with 6+ years of experience building scalable mobile
+                and web applications across AI, Fintech & Banking. I specialize in cross-platform
+                mobile engineering with Flutter and React Native, and have built systems serving
+                50M+ users.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Button asChild size="lg" className="rounded-full px-8 shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all">
@@ -511,24 +499,6 @@ export default function Hero() {
                     </div>
                   )}
 
-                  {deviceType === "desktop" && (
-                    <div className="relative flex flex-col items-center w-full max-w-[27rem] transition-all duration-300">
-                      {/* Monitor Screen */}
-                      <div className="relative w-full h-[16rem] bg-zinc-950 rounded-t-xl p-2 border-t-4 border-x-4 border-zinc-800 shadow-2xl flex flex-col overflow-hidden">
-                        <div className="flex-1 rounded-t-lg overflow-hidden border border-zinc-850">
-                          {renderScreenContent("desktop", false)}
-                        </div>
-                      </div>
-                      {/* Monitor bottom bezel */}
-                      <div className="w-[101.5%] h-3.5 bg-zinc-800 rounded-b-xl flex items-center justify-center border-b-2 border-zinc-700 shadow-md">
-                        <div className="w-10 h-1 bg-zinc-900 rounded-full"></div>
-                      </div>
-                      {/* Monitor Stand */}
-                      <div className="w-12 h-6 bg-zinc-700 border-x border-zinc-600 shadow-inner"></div>
-                      {/* Monitor Base */}
-                      <div className="w-28 h-1.5 bg-zinc-800 rounded-t-lg border-t border-zinc-650"></div>
-                    </div>
-                  )}
                 </motion.div>
               </AnimatePresence>
             </div>

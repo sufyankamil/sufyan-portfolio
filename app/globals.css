@@ -81,3 +81,40 @@
   }
 }
 
+
+/* Resume "Download PDF": print only the resume dialog contents */
+@media print {
+  @page {
+    margin: 12mm;
+  }
+  body * {
+    visibility: hidden;
+  }
+  #resume-print,
+  #resume-print * {
+    visibility: visible;
+  }
+  [role="dialog"]:has(#resume-print) {
+    position: static !important;
+    transform: none !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  #resume-print {
+    position: absolute;
+    inset: 0 0 auto 0;
+    color: #000;
+  }
+  #resume-print h2 {
+    background: none !important;
+    -webkit-text-fill-color: #000;
+  }
+  html,
+  body {
+    overflow: visible !important;
+    height: auto !important;
+  }
+}

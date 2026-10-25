@@ -7,86 +7,17 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { Code2, Database, Layers, ShieldCheck, Smartphone, Terminal, Zap } from "lucide-react";
 import Image from "next/image";
 
-const skills = [
-  {
-    category: "Programming Languages",
-    items: [
-      { name: "TypeScript", level: 92 },
-      { name: "Dart", level: 95 },
-      { name: "JavaScript", level: 90 },
-      { name: "Swift", level: 80 },
-    ],
-  },
-  {
-    category: "Mobile & Web Development",
-    items: [
-      { name: "Next.js", level: 92 },
-      { name: "React / React 19", level: 90 },
-      { name: "Flutter", level: 95 },
-      { name: "React Native", level: 88 },
-    ],
-  },
-  {
-    category: "Databases & Backend",
-    items: [
-      { name: "Firebase", level: 90 },
-      { name: "Supabase", level: 85 },
-      { name: "MongoDB", level: 80 },
-      { name: "PostgreSQL", level: 75 },
-    ],
-  },
-  {
-    category: "Tools & Practices",
-    items: [
-      { name: "Git", level: 90 },
-      { name: "CI/CD", level: 85 },
-      { name: "JIRA", level: 80 },
-      { name: "Agile", level: 85 },
-    ],
-  },
-];
-
 const technologies = [
-  {
-    name: "Flutter",
-    icon: "https://cdn.prod.website-files.com/5ee12d8d7f840543bde883de/5ef3a1148ac97166a06253c1_flutter-logo-white-inset.svg",
-  },
-  {
-    name: "Dart",
-    icon: "https://dart-code.gallerycdn.vsassets.io/extensions/dart-code/dart-code/3.109.20250404/1743679141664/Microsoft.VisualStudio.Services.Icons.Default",
-  },
-  {
-    name: "React",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-  },
-  {
-    name: "Node.js",
-    icon: "https://miro.medium.com/v2/resize:fit:866/1*1UBNwRFaslvqt_G3Njw3pg.jpeg",
-  },
-  {
-    name: "Firebase",
-    icon: "https://firebase.google.com/static/downloads/brand-guidelines/PNG/logo-logomark.png",
-  },
-  {
-    name: "MySQL",
-    icon: "https://www.mysql.com/common/logos/logo-mysql-170x115.png",
-  },
-  {
-    name: "MongoDB",
-    icon: "https://w7.pngwing.com/pngs/115/190/png-transparent-mongodb-original-logo-icon-thumbnail.png",
-  },
-  {
-    name: "Git",
-    icon: "https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png",
-  },
-  {
-    name: "React Native",
-    icon: "https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg",
-  },
-  {
-    name: "Supabase",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/supabase/supabase-original.svg",
-  },
+  { name: "Flutter", icon: "/tech/flutter.svg" },
+  { name: "Dart", icon: "/tech/dart.svg" },
+  { name: "React", icon: "/tech/react.svg" },
+  { name: "Node.js", icon: "/tech/nodejs.svg" },
+  { name: "Firebase", icon: "/tech/firebase.svg" },
+  { name: "MySQL", icon: "/tech/mysql.svg" },
+  { name: "MongoDB", icon: "/tech/mongodb.svg" },
+  { name: "Git", icon: "/tech/git.svg" },
+  { name: "React Native", icon: "/tech/react.svg" },
+  { name: "Supabase", icon: "/tech/supabase.svg" },
 ];
 
 function BentoCard({
@@ -193,27 +124,15 @@ export default function Skills() {
                 </p>
                 <div className="space-y-6 mt-auto">
                   {[
-                    { name: "Flutter & React Native", level: 95 },
-                    { name: "Frontend (React / Next.js)", level: 88 },
-                    { name: "Backend (Node.js & Databases)", level: 85 }
+                    { name: "Flutter & React Native", usedIn: "TransitMS, Transit Rider, Donor Connect, CivicNet" },
+                    { name: "Frontend (React / Next.js)", usedIn: "Pathways DXB, Transit Web Portal" },
+                    { name: "Backend (Node.js & Databases)", usedIn: "Node.js & Supabase APIs, SaaS-ScrapeFlow" }
                   ].map((skill) => (
-                    <div key={skill.name}>
-                      <div className="flex justify-between mb-2">
-                        <span className="font-semibold text-sm">{skill.name}</span>
-                        <span className="text-primary font-bold text-sm">{skill.level}%</span>
-                      </div>
-                      <div className="h-2 bg-muted rounded-full overflow-hidden relative">
-                        <motion.div
-                          className="h-full bg-primary rounded-full relative"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1, delay: 0.2 }}
-                        >
-                          {/* Inner glowing dot */}
-                          <div className="absolute right-0 top-0 bottom-0 w-1.5 h-1.5 m-auto bg-white rounded-full shadow-lg shadow-white" />
-                        </motion.div>
-                      </div>
+                    <div key={skill.name} className="border-l-2 border-primary/40 pl-4">
+                      <span className="font-semibold text-sm block mb-1">{skill.name}</span>
+                      <span className="text-muted-foreground text-xs">
+                        Shipped in: <span className="text-foreground/80">{skill.usedIn}</span>
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -241,7 +160,7 @@ export default function Skills() {
                   {[
                     { name: "JS / TypeScript", icon: Terminal },
                     { name: "Dart", icon: Smartphone },
-                    { name: "Swift", icon: Code2 },
+                    { name: "Java", icon: Code2 },
                     { name: "Kotlin", icon: Layers }
                   ].map((item) => (
                     <div key={item.name} className="relative group">
@@ -253,7 +172,7 @@ export default function Skills() {
                       <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2.5 w-52 bg-zinc-950 dark:bg-zinc-900 text-zinc-100 dark:text-zinc-200 border border-zinc-800 text-[10px] p-2.5 rounded-xl shadow-2xl z-50 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 pointer-events-none transition-all duration-200 text-center leading-normal font-mono">
                         {item.name === "JS / TypeScript" && "Used for Node.js backends & React/Next.js frontends."}
                         {item.name === "Dart" && "Primary language for Flutter mobile applications."}
-                        {item.name === "Swift" && "Used for native iOS integrations & platform channels."}
+                        {item.name === "Java" && "Used for native Android modules & SDK integrations."}
                         {item.name === "Kotlin" && "Used for native Android bridges & background services."}
                       </div>
                     </div>
@@ -362,7 +281,7 @@ export default function Skills() {
         {/* Infinite Sliding Marquees */}
         <div className="border-t border-border/10 pt-16 overflow-hidden flex flex-col gap-6 relative">
           {/* Row 1: Left-scrolling marquee */}
-          <div className="flex w-full overflow-hidden select-none pointer-events-none mask-image">
+          <div aria-hidden="true" className="flex w-full overflow-hidden select-none pointer-events-none mask-image">
             <motion.div
               className="flex gap-12 flex-shrink-0"
               animate={{ x: [0, -400] }}
@@ -378,7 +297,7 @@ export default function Skills() {
               {[...row1, ...row1, ...row1].map((tech, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <div className="relative w-8 h-8 opacity-75">
-                    <Image src={tech.icon} alt={tech.name} fill className="object-contain grayscale hover:grayscale-0 transition-all" unoptimized={true} />
+                    <Image src={tech.icon} alt={tech.name} fill className="object-contain grayscale hover:grayscale-0 transition-all" />
                   </div>
                   <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{tech.name}</span>
                 </div>
@@ -387,7 +306,7 @@ export default function Skills() {
           </div>
 
           {/* Row 2: Right-scrolling marquee */}
-          <div className="flex w-full overflow-hidden select-none pointer-events-none mask-image">
+          <div aria-hidden="true" className="flex w-full overflow-hidden select-none pointer-events-none mask-image">
             <motion.div
               className="flex gap-12 flex-shrink-0"
               animate={{ x: [-400, 0] }}
@@ -403,7 +322,7 @@ export default function Skills() {
               {[...row2, ...row2, ...row2].map((tech, index) => (
                 <div key={index} className="flex items-center gap-3">
                   <div className="relative w-8 h-8 opacity-75">
-                    <Image src={tech.icon} alt={tech.name} fill className="object-contain grayscale hover:grayscale-0 transition-all" unoptimized={true} />
+                    <Image src={tech.icon} alt={tech.name} fill className="object-contain grayscale hover:grayscale-0 transition-all" />
                   </div>
                   <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{tech.name}</span>
                 </div>

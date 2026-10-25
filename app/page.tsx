@@ -8,17 +8,28 @@ import Hero from "@/components/hero";
 import Navbar from "@/components/navbar";
 import Projects from "@/components/projects";
 import Skills from "@/components/skills";
-import type { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Sufyan Kamil | Software Engineer | Mobile Engineer",
-  description:
-    "Professional portfolio of Sufyan Kamil, showcasing Software Engineering, Full Stack, and Mobile Development skills and projects",
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Sufyan Kamil",
+  url: "https://sufyankamil.com",
+  jobTitle: "Senior Software Engineer",
+  image: "https://sufyankamil.com/images/sufyan-kamil.webp",
+  worksFor: { "@type": "Organization", name: "Lauren Information Technologies" },
+  address: { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "University of Mumbai" },
+  knowsAbout: ["React Native", "Flutter", "Next.js", "React", "TypeScript", "Node.js", "Supabase", "Firebase"],
+  sameAs: ["https://github.com/sufyankamil", "https://www.linkedin.com/in/sufyankamil/", "https://flutter-mastery.hashnode.dev/"],
 };
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
       <Navbar />
       <main>
         <GateExperience />

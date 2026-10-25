@@ -1,13 +1,12 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
-import { useToast } from "@/hooks/use-toast";
+import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, Linkedin, Mail, X } from "lucide-react";
 import { useRef, useState, useEffect } from "react";
 
 export default function Contact() {
-  const { toast } = useToast();
   const [showPrompt, setShowPrompt] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
@@ -33,8 +32,7 @@ export default function Contact() {
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("sufyankamil15@gmail.com");
-    toast({
-      title: "Email Copied",
+    toast.success("Email copied", {
       description: "sufyankamil15@gmail.com copied to clipboard!",
     });
   };

@@ -11,7 +11,6 @@ const snippets = [
     title: "Optimizing Flutter Performance",
     excerpt: "How to reduce widget rebuilds and optimize for 60FPS using const constructors and RepaintBoundary.",
     category: "Flutter",
-    date: "March 2024",
     url: "https://flutter-mastery.hashnode.dev/beyond-the-ui-mastering-flutter-performance-at-60fps",
     icon: <Cpu className="text-primary" size={20} />,
     color: "bg-blue-500/10 text-blue-500",
@@ -32,7 +31,6 @@ RepaintBoundary(
     title: "Clean Architecture in Dart",
     excerpt: "Implementing Domain-Driven Design (DDD) for scalable mobile applications with BLoC state management.",
     category: "Architecture",
-    date: "February 2024",
     url: "https://flutter-mastery.hashnode.dev/scalable-flutter-why-clean-architecture-is-a-must-for-professional-apps",
     icon: <Code2 className="text-primary" size={20} />,
     color: "bg-purple-500/10 text-purple-500",
@@ -52,7 +50,6 @@ RepaintBoundary(
     title: "Supabase & Edge Functions",
     excerpt: "Leveraging serverless functions for real-time mobile backend logic without maintaining a server.",
     category: "Backend",
-    date: "January 2024",
     url: "https://flutter-mastery.hashnode.dev/the-modern-mobile-backend-scaling-faster-with-supabase-and-edge-functions",
     icon: <Lightbulb className="text-primary" size={20} />,
     color: "bg-emerald-500/10 text-emerald-500",
@@ -116,7 +113,7 @@ export default function Blog() {
                     {snippet.excerpt}
                   </p>
                   <div className="flex items-center justify-between text-xs font-semibold">
-                    <span className="text-muted-foreground/60">{snippet.date}</span>
+                    <span className="text-muted-foreground/60">On Hashnode</span>
                     <Dialog>
                       <DialogTrigger asChild>
                         <button className="flex items-center gap-1 text-primary hover:underline group/link cursor-pointer bg-transparent border-none p-0 outline-none">

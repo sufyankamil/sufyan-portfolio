@@ -10,7 +10,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Smartphone, X } from "lucide-react";
+import { Download, Menu, Smartphone, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import ResumeView from "./resume-view";
 import { ThemeToggle } from "./theme-toggle";
@@ -203,12 +203,17 @@ export default function Navbar() {
       {/* Resume Dialog */}
       <Dialog open={showResume} onOpenChange={setShowResume}>
         <DialogContent className="max-w-4xl h-[80vh] overflow-y-auto">
-          <DialogHeader>
+          <DialogHeader className="flex-row items-center justify-between gap-4 space-y-0 pr-8 print:hidden">
             <DialogTitle className="text-2xl font-bold">
               Sufyan Kamil - Resume
             </DialogTitle>
+            <Button size="sm" className="rounded-full" onClick={() => window.print()}>
+              <Download className="w-4 h-4 mr-2" /> Download PDF
+            </Button>
           </DialogHeader>
-          <ResumeView />
+          <div id="resume-print">
+            <ResumeView />
+          </div>
         </DialogContent>
       </Dialog>
     </>

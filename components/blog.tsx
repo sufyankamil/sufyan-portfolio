@@ -80,8 +80,8 @@ export default function Blog() {
             Engineering <span className="text-primary">Insights</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Sharing technical discoveries and architectural patterns from 
-            building production-grade mobile applications.
+            Sharing technical discoveries and UI engineering patterns from
+            building production-grade mobile and web interfaces.
           </p>
         </motion.div>
 

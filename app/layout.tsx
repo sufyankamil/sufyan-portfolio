@@ -3,9 +3,9 @@ import type React from "react"
 import ClientLayout from "./ClientLayout"
 
 const siteUrl = "https://sufyankamil.com"
-const title = "Sufyan Kamil | Senior Software Engineer | Mobile Engineer"
+const title = "Sufyan Kamil | Software Engineer | UI/UX & Front-End"
 const description =
-  "Portfolio of Sufyan Kamil, a Dubai-based Senior Software Engineer with 6+ years building mobile and web apps across AI, Fintech & Banking with Flutter, React Native and Next.js."
+  "Portfolio of Sufyan Kamil, a Dubai-based Software Engineer focused on UI/UX and front-end. 6 years designing in Figma and building accessible, responsive interfaces in Flutter and React for banking, fintech and AI products."
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

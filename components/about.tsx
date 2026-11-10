@@ -2,7 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Code, Layers, Smartphone, Zap } from "lucide-react";
+import { Accessibility, Code, Layers, Smartphone } from "lucide-react";
 import { ScrollParallax } from "@/components/scroll-parallax";
 import { useRef } from "react";
 
@@ -75,28 +75,28 @@ export default function About() {
 
   const features = [
     {
-      icon: <Code className="h-10 w-10" />,
-      title: "Clean Code",
+      icon: <Layers className="h-10 w-10" />,
+      title: "Design Systems",
       description:
-        "I write clean, maintainable code following best practices and design patterns.",
+        "Reusable component libraries built on shared typography, spacing and colour tokens, documented for the whole team.",
     },
     {
       icon: <Smartphone className="h-10 w-10" />,
       title: "Responsive Design",
       description:
-        "Creating interfaces that work flawlessly across all device sizes and orientations.",
+        "Layouts, states and interaction patterns that stay consistent across iOS, Android and web.",
     },
     {
-      icon: <Zap className="h-10 w-10" />,
-      title: "Performance Focused",
+      icon: <Accessibility className="h-10 w-10" />,
+      title: "Accessible by Default",
       description:
-        "Building high-performance apps with smooth animations and efficient resource usage.",
+        "Colour contrast, touch-target sizing, screen-reader labels and scalable text applied across mobile and web.",
     },
     {
-      icon: <Layers className="h-10 w-10" />,
-      title: "Clean Architecture",
+      icon: <Code className="h-10 w-10" />,
+      title: "Design to Code",
       description:
-        "Implementing clean architectures, design patterns (MVVM, SOLID), and modular, testable codebases.",
+        "High-fidelity Figma screens, prototypes and dev-ready specs that I then build in Flutter and React and review against the approved design.",
     },
   ];
 
@@ -127,11 +127,11 @@ export default function About() {
           </div>
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4">About Me</h2>
           <p className="text-lg text-muted-foreground">
-            I'm a Senior Software Engineer with a degree in Computer Engineering and 6+ years of
-            experience across AI, Fintech & Banking. I work across application architecture,
-            RESTful APIs, backend services, databases, authentication, cloud services, CI/CD and
-            third-party SDK integrations, with Flutter, React Native, Next.js, React, TypeScript
-            and Node.js as my core stack.
+            I'm a Software Engineer with a degree in Computer Engineering and 6 years of
+            experience across banking, fintech and AI products. My focus is user interfaces:
+            I work with design systems, reusable component libraries, developer handover and
+            design QA, designing in Figma and building in Flutter and React, backed by solid
+            knowledge of APIs, architecture and CI/CD.
           </p>
         </motion.div>
 
@@ -190,12 +190,13 @@ export default function About() {
                 <h3 className="text-2xl font-bold tracking-tight">My Journey</h3>
               </div>
               <p className="text-muted-foreground leading-relaxed">
-                I've built backend and mobile systems serving 300,000+ concurrent users at
-                99.9% uptime, and cut production defects by ~60% through modular architecture,
-                CI/CD and automated testing. At Lauren Information Technologies I build Axis
-                Bank internet banking features in Flutter for a 50M+ user base, a real-time
-                transportation platform in React Native and Next.js, and the web portal for a
-                Dubai education marketplace with AI-based institution matching.
+                At Lauren Information Technologies I designed and built Axis Bank internet
+                banking features in Flutter for a 50M+ user base, role-based interfaces for a
+                real-time transport platform in React Native and Next.js, and the responsive
+                web portal for a Dubai education marketplace. Along the way I built a reusable
+                UI component library aligned to the design system, which improved delivery
+                speed by ~30% and cut UI defects by ~60%. I also designed and shipped CivicNet,
+                my own AI-powered community app, end to end from Figma to the App Store.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 When I'm not coding, you can find me playing cricket or
@@ -205,7 +206,7 @@ export default function About() {
             <div className="lg:col-span-2 w-full">
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-6 rounded-2xl bg-primary/5 dark:bg-primary/10 border border-primary/10 flex flex-col items-center justify-center text-center shadow-inner hover:-translate-y-1 transition-all duration-300">
-                  <span className="text-4xl md:text-5xl font-extrabold text-primary mb-2 tracking-tight">6+</span>
+                  <span className="text-4xl md:text-5xl font-extrabold text-primary mb-2 tracking-tight">6</span>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
                     Years Experience
                   </span>

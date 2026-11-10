@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og"
 
 export const dynamic = "force-static"
-export const alt = "Sufyan Kamil — Senior Software Engineer"
+export const alt = "Sufyan Kamil — Software Engineer, UI/UX & Front-End"
 export const size = { width: 1200, height: 630 }
 export const contentType = "image/png"
 
@@ -26,10 +26,10 @@ export default function OpengraphImage() {
         </div>
         <div style={{ fontSize: 88, fontWeight: 800, lineHeight: 1.05 }}>Sufyan Kamil</div>
         <div style={{ fontSize: 40, color: "#c7d2fe", marginTop: 20 }}>
-          Senior Software Engineer · Dubai
+          Software Engineer · UI/UX & Front-End · Dubai
         </div>
         <div style={{ fontSize: 28, color: "#94a3b8", marginTop: 40 }}>
-          React Native · Flutter · Next.js · Node.js
+          Figma · Flutter · React · Next.js
         </div>
       </div>
     ),

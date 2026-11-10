@@ -8,6 +8,7 @@ import { Code2, Database, Layers, ShieldCheck, Smartphone, Terminal, Zap } from 
 import Image from "next/image";
 
 const technologies = [
+  { name: "Figma", icon: "/tech/figma.svg" },
   { name: "Flutter", icon: "/tech/flutter.svg" },
   { name: "Dart", icon: "/tech/dart.svg" },
   { name: "React", icon: "/tech/react.svg" },
@@ -70,8 +71,8 @@ function BentoCard({
 
 export default function Skills() {
   // Split technologies into two rows for the marquee
-  const row1 = technologies.slice(0, 5);
-  const row2 = technologies.slice(5);
+  const row1 = technologies.slice(0, 6);
+  const row2 = technologies.slice(6);
 
   return (
     <section id="skills" className="py-24 bg-background relative overflow-hidden">
@@ -95,8 +96,8 @@ export default function Skills() {
             Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Ecosystem</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            A comprehensive engineering toolkit focused on building high-performance cross-platform
-            mobile applications, scalable web solutions, and clean, modular systems.
+            A design-to-code toolkit: high-fidelity UI and prototypes in Figma, built as accessible,
+            responsive interfaces in Flutter and React, on top of solid engineering fundamentals.
           </p>
         </motion.div>
 
@@ -116,17 +117,24 @@ export default function Skills() {
                   <div className="p-3.5 bg-primary/10 text-primary rounded-2xl shadow-inner">
                     <Zap size={24} />
                   </div>
-                  <h3 className="text-2xl font-bold">Software & Mobile Engineering</h3>
+                  <h3 className="text-2xl font-bold">UI/UX & Front-End Engineering</h3>
                 </div>
                 <p className="text-muted-foreground mb-8 text-base leading-relaxed">
-                  Extensive experience designing robust cross-platform mobile apps,
-                  implementing clean architecture, and building production-ready web portals.
+                  I take user flows and wireframes to high-fidelity screens, interactive prototypes
+                  and developer-ready specs, then build and review the UI against the approved design.
                 </p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {["High-Fidelity UI", "Interactive Prototyping", "Design Systems", "Accessibility (WCAG basics)", "UI States", "Developer Handover", "Design QA"].map((skill) => (
+                    <Badge key={skill} variant="outline" className="border-primary/20 bg-primary/5 text-primary text-[10px] font-semibold rounded-full px-2.5">
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
                 <div className="space-y-6 mt-auto">
                   {[
-                    { name: "Flutter & React Native", usedIn: "TransitMS, Transit Rider, Donor Connect, CivicNet" },
-                    { name: "Frontend (React / Next.js)", usedIn: "Pathways DXB, Transit Web Portal" },
-                    { name: "Backend (Node.js & Databases)", usedIn: "Node.js & Supabase APIs, SaaS-ScrapeFlow" }
+                    { name: "Figma (components, variants, auto-layout, prototyping, Dev Mode)", usedIn: "CivicNet, design-system component library" },
+                    { name: "Flutter & React Native", usedIn: "Axis Bank, TransitMS, Transit Rider, CivicNet" },
+                    { name: "Frontend (React / Next.js)", usedIn: "Pathways DXB, Transit Web Portal" }
                   ].map((skill) => (
                     <div key={skill.name} className="border-l-2 border-primary/40 pl-4">
                       <span className="font-semibold text-sm block mb-1">{skill.name}</span>
@@ -239,7 +247,7 @@ export default function Skills() {
                   {[
                     { name: "Git", desc: "Version control, multi-dev merges & pull reviews." },
                     { name: "CI/CD", desc: "GitHub Actions, Fastlane & TestFlight pipelines." },
-                    { name: "Docker", desc: "Containerizing web services & local databases." },
+                    { name: "Design QA", desc: "Reviewing built screens against approved designs & logging gaps." },
                     { name: "Agile", desc: "Daily scrums, Jira tracking & sprint scopes." }
                   ].map(t => (
                     <div key={t.name} className="relative group">
@@ -269,7 +277,7 @@ export default function Skills() {
               <CardContent className="p-6 flex items-center justify-between gap-6">
                 <div className="space-y-1">
                   <h3 className="font-bold text-base">Continuous Learning</h3>
-                  <p className="text-xs text-muted-foreground italic leading-relaxed">"Always exploring new architectural patterns and cloud-native solutions."</p>
+                  <p className="text-xs text-muted-foreground italic leading-relaxed">"Always exploring new interaction patterns, design-system practices and UI tooling."</p>
                 </div>
                 <Zap className="text-primary/40 animate-pulse flex-shrink-0" size={32} />
               </CardContent>

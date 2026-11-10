@@ -185,7 +185,7 @@ export function GateExperience({ onComplete }: GateExperienceProps) {
 
             {/* Role & Location Subtitle */}
             <p className="text-sm md:text-lg text-white/70 max-w-lg mx-auto mb-8 font-medium">
-              Software Engineer • Mobile Architect • Dubai
+              Software Engineer • UI/UX & Front-End • Dubai
             </p>
 
             {/* Stepping into portfolio indicator */}

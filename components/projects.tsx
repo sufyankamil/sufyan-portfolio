@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import {
+  Figma,
   Github,
   Smartphone,
   Globe as WebIcon,
@@ -20,14 +21,29 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { FIGMA_PROTOTYPE_URL } from "@/lib/links";
 
 const projects = [
+  {
+    id: 8,
+    title: "CivicNet — AI-Powered Community Help App",
+    description:
+      "Designed, built and shipped solo: a cross-platform Flutter app connecting people who need help with nearby neighbours. Full UX/UI in Figma (user flows, wireframes, high-fidelity screens, interactive prototype and a reusable component library) covering onboarding, empty, error and loading states and location-privacy UX, with AI matching on Gemini embeddings and pgvector.",
+    image: "/projects/civicnet_feature_graphic.webp",
+    tags: ["Figma", "UX/UI Design", "Flutter", "Supabase", "pgvector", "Gemini API"],
+    github: "https://github.com/sufyankamil/ai-civicnet",
+    live: "https://apps.apple.com/us/app/civicnet/id6761416586",
+    liveLabel: "App Store",
+    figma: FIGMA_PROTOTYPE_URL,
+    category: "mobile",
+    featured: true,
+  },
   {
     id: 1,
     title: "Pathways DXB — Education Marketplace Portal",
     client: true,
     description:
-      "Web portal for a Dubai education marketplace targeting 400,000+ school and university students. AI-based matching recommends institutions from each user's fee range, course interests and location, alongside verified institution microsites, multi-stage admissions with status tracking, and admin approval workflows in a Turborepo monorepo.",
+      "Responsive web portal for a Dubai education marketplace targeting 400,000+ school and university students, with role-based UI for students, parents and institutions. AI-based matching recommends institutions from each user's fee range, course interests and location, alongside multi-stage admissions tracking.",
     image: "/projects/pathways_dxb_cover.webp",
     tags: ["Next.js 16", "React 19", "AI Matching", "Turborepo", "TypeScript", "Tailwind CSS v4"],
     category: "web",
@@ -38,7 +54,7 @@ const projects = [
     title: "Axis Bank — Internet Banking",
     client: true,
     description:
-      "Internet banking features in Flutter for India's 4th largest bank, serving a 50M+ user base. Covers OAuth authentication, fraud and dispute management and transaction flows, with encrypted API calls and secure on-device storage.",
+      "Internet banking features in Flutter for India's 4th largest bank, serving a 50M+ user base. Covers OAuth authentication, fraud and dispute management and transaction flows, with complete loading, empty, error, success and validation states, encrypted API calls and secure on-device storage.",
     mockup: "banking",
     tags: ["Flutter", "OAuth", "Encrypted APIs", "Secure Storage", "Fintech"],
     category: "mobile",
@@ -49,7 +65,7 @@ const projects = [
     title: "TransitMS — Driver / Parent / Para",
     client: true,
     description:
-      "Shared React Native app with role-specific builds for drivers, parents, and paras—covering GPS tracking, trip management, pre-trip inspections, notifications, localization and maps across iOS and Android.",
+      "Role-based React Native interfaces for drivers, parents and paras, covering trips, pre-trip inspections and maps, with layouts, states and interaction patterns kept consistent across iOS and Android.",
     image: "/projects/sentryms_cover.webp",
     tags: ["React Native", "Live GPS", "Role-based Builds", "Real-time Tracking"],
     category: "mobile",
@@ -71,7 +87,7 @@ const projects = [
     title: "Transit Web Portal",
     client: true,
     description:
-      "Next.js operations dashboard for school districts—route planning, live trip monitoring, fleet and student management, and admin workflows for safe daily transport.",
+      "Next.js operations dashboard for school districts: route planning, live trip monitoring, fleet and student management, designed to stay consistent with the mobile apps' layouts and interaction patterns.",
     image: "/projects/sentryride_web_cover.webp",
     tags: ["Next.js", "React", "TypeScript", "Operations Dashboard"],
     category: "web",
@@ -106,19 +122,6 @@ const projects = [
     tags: ["React", "Node.js", "MongoDB", "REST API"],
     github: "https://github.com/sufyankamil/SaaS-ScrapeFlow",
     category: "web",
-    featured: false,
-  },
-  {
-    id: 8,
-    title: "CivicNet",
-    description:
-      "A Flutter application designed to connect, help, and build community, empowering users to engage in civic activities.",
-    image: "/projects/civicnet_feature_graphic.webp",
-    tags: ["Flutter", "Dart", "Community", "Supabase", "Firebase"],
-    github: "https://github.com/sufyankamil/ai-civicnet",
-    live: "https://apps.apple.com/app/id6761416586",
-    liveLabel: "App Store",
-    category: "mobile",
     featured: false,
   },
   {
@@ -186,7 +189,7 @@ export default function Projects() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Works & Projects</span>
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              A curated showcase of mobile apps and custom web platforms, highlighting clean architecture, interactive animations, and responsive system design.
+              A curated showcase of mobile apps and web platforms I designed and built, highlighting high-fidelity UI, consistent states and interaction patterns, and responsive, accessible layouts.
             </p>
           </motion.div>
 
@@ -430,6 +433,13 @@ function ProjectCard({ project, index }: { project: any; index: number }) {
                   <Button asChild size="sm" variant="outline" className="rounded-full border-primary/20 hover:bg-primary hover:text-primary-foreground group/btn shadow-sm transition-all duration-300">
                     <Link href={project.github} target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" /> Code
+                    </Link>
+                  </Button>
+                )}
+                {project.figma && (
+                  <Button asChild size="sm" variant="outline" className="rounded-full border-primary/20 hover:bg-primary hover:text-primary-foreground group/btn shadow-sm transition-all duration-300">
+                    <Link href={project.figma} target="_blank" rel="noopener noreferrer">
+                      <Figma className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform" /> Prototype
                     </Link>
                   </Button>
                 )}

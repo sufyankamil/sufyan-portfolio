@@ -2,12 +2,13 @@
 
 import { Button } from "@/components/ui/button";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
-import { ArrowRight, Code2, Cpu, Layers, Mail, Smartphone, Monitor, Tablet, type LucideIcon } from "lucide-react";
+import { ArrowRight, Code2, Figma, Layers, Mail, Smartphone, Monitor, Tablet, type LucideIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, useEffect } from "react";
 import { toast } from "sonner";
 import { ScrollParallax } from "@/components/scroll-parallax";
+import { FIGMA_PROTOTYPE_URL } from "@/lib/links";
 
 function GithubIcon(props: React.ComponentProps<"svg">) {
   return (
@@ -98,7 +99,7 @@ export default function Hero() {
   const mouseY = useMotionValue(0);
   const [deviceType, setDeviceType] = useState<"mobile" | "tablet">("mobile");
   const [isIntroActive, setIsIntroActive] = useState(false);
-  const words = ["interactive UIs", "next-gen apps", "full-stack webs", "cloud pipelines"];
+  const words = ["accessible UIs", "design systems", "hi-fi prototypes", "responsive apps"];
   const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
@@ -197,11 +198,11 @@ export default function Hero() {
           </div>
           <div>
             <h3 className={`font-bold tracking-tight leading-tight ${isXL ? "text-2xl" : "text-lg"}`}>Sufyan Kamil</h3>
-            <p className={`font-mono text-zinc-400 ${isXL ? "text-xs" : "text-[10px]"}`}>Senior Software Engineer</p>
+            <p className={`font-mono text-zinc-400 ${isXL ? "text-xs" : "text-[10px]"}`}>UI/UX & Front-End Engineer</p>
           </div>
           {/* Minimal Stack Badge details */}
           <div className="flex flex-wrap gap-1.5 pt-1">
-            {["RN", "FLUTTER", "NEXT.JS", "NODE"].map((tech) => (
+            {["FIGMA", "FLUTTER", "REACT", "NEXT.JS"].map((tech) => (
               <span key={tech} className={`bg-white/10 hover:bg-white/20 rounded border border-white/5 transition-all font-mono font-medium ${isXL ? "px-2 py-1 text-[10px]" : "px-1.5 py-0.5 text-[8px]"}`}>
                 {tech}
               </span>
@@ -326,7 +327,7 @@ export default function Hero() {
       <FloatingIcon icon={Smartphone} delay={0} x={64} y={96} yOffset={120} />
       <FloatingIcon icon={Code2} delay={1} x={800} y={80} yOffset={-160} />
       <FloatingIcon icon={Layers} delay={2} x={720} y={360} yOffset={100} />
-      <FloatingIcon icon={Cpu} delay={0.5} x={96} y={400} yOffset={-120} />
+      <FloatingIcon icon={Figma} delay={0.5} x={96} y={400} yOffset={-120} />
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -343,7 +344,7 @@ export default function Hero() {
                 transition={{ delay: 0.2 }}
                 className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold tracking-wide border border-primary/20"
               >
-                Senior Software Engineer · Dubai, UAE
+                Software Engineer · UI/UX & Front-End · Dubai, UAE
               </motion.div>
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight flex flex-wrap items-center">
                 Building&nbsp;
@@ -364,10 +365,10 @@ export default function Hero() {
                 for mobile & web
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Senior Software Engineer with 6+ years of experience building scalable mobile
-                and web applications across AI, Fintech & Banking. I specialize in cross-platform
-                mobile engineering with Flutter and React Native, and have built systems serving
-                50M+ users.
+                Software Engineer with 6 years of experience building mobile and web applications
+                for banking, fintech and AI products serving 50M+ users. My focus is user interfaces:
+                I turn product requirements, user flows and wireframes into high-fidelity, accessible,
+                responsive screens in Figma, then build them in Flutter and React.
               </p>
               <div className="flex flex-wrap gap-4 pt-2">
                 <Button asChild size="lg" className="rounded-full px-8 shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-all">
@@ -396,6 +397,7 @@ export default function Hero() {
                 {[
                   { icon: GithubIcon, href: "https://github.com/sufyankamil", label: "GitHub" },
                   { icon: LinkedinIcon, href: "https://www.linkedin.com/in/sufyankamil/", label: "LinkedIn" },
+                  { icon: Figma, href: FIGMA_PROTOTYPE_URL, label: "Figma Prototype" },
                   { 
                     icon: Mail, 
                     onClick: () => {

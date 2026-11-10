@@ -6,38 +6,24 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion, AnimatePresence } from "framer-motion";
 import { Award, Briefcase, Calendar, ChevronDown, GraduationCap, Trophy } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
+import { headstraitAchievements, litAchievements } from "@/lib/resume-data";
 
 const experiences = [
   {
-    title: "Senior Software Engineer",
+    title: "UI/UX Designer",
     company: "Lauren Information Technologies",
-    period: "July 2023 - Present",
+    period: "July 2023 - October 2026",
     description:
-      "Building secure banking features, real-time transportation apps and AI-assisted web platforms with Flutter, React Native, Next.js and TypeScript.",
-    achievements: [
-      "Built Axis Bank (4th largest bank in India) internet banking features in Flutter with a user base of 50 Mn+, covering OAuth authentication, fraud and dispute management and transaction flows, with encrypted API calls and secure on-device storage",
-      "Developed React Native mobile applications for a real-time transportation platform, implementing GPS tracking, trip management, route planning, pre-trip inspections, notifications, localization, maps, and role-based workflows across iOS and Android",
-      "Developed the corresponding operations portal using Next.js, React, and TypeScript, supporting route planning, live trip monitoring, fleet management, analytics, and administrative workflows",
-      "Built the web portal for a Dubai education marketplace targeting 400,000+ school and university students (Next.js, React, TypeScript, Turborepo), with AI-based matching that recommends institutions from each user's fee range, course interests and location",
-      "Delivered verified institution microsites, admin approval workflows, multi-stage admissions with status tracking, and role-based access for students, parents and institutions",
-      "Integrated RESTful APIs, Firebase, Mapbox, third-party SDKs, cloud services, and native Android components, optimizing performance, reliability, and cross-platform functionality",
-      "Improved development velocity by ~30% and reduced production defects by ~60% through modular architecture, reusable components, CI/CD, automated testing, and structured release processes",
-    ],
+      "Designed high-fidelity screens and prototypes in Figma and built them in Flutter, React Native and Next.js for banking, transport and education products.",
+    achievements: litAchievements,
   },
   {
     title: "Software Engineer",
     company: "Headstrait Software",
     period: "Jan 2021 - Apr 2023",
     description:
-      "Scaled backend and mobile infrastructure, built a low-code app platform, and delivered Web3 and digital banking products.",
-    achievements: [
-      "Engineered and scaled backend and mobile infrastructure supporting 300,000+ concurrent users with 99.9% uptime through distributed architecture, database optimization, and high-availability design",
-      "Improved platform performance by ~20% and reduced API response times by ~30% through architectural refactoring, backend optimization, and database query tuning",
-      "Built a low-code application platform with Flutter Web and React UI modules, Node.js services, and automated code/service generators, accelerating app creation by ~50%, reducing manual errors by ~60%, and saving 14+ hours per project",
-      "Developed responsive, reusable frontend components using React (hooks, state management, REST integration) to improve scalability and maintainability",
-      "Delivered a Web3 cross-chain marketplace with smart contracts, decentralized identity, and token-based payments across 4 networks with 99.9% uptime, ~15% higher transaction success rates, and ~250ms lower latency",
-      "Led development of a secure digital banking platform with KYC workflows, user dashboards, and transaction controls, including React admin and analytics panels, reducing onboarding time by 30% and unauthorized transactions by ~20%",
-    ],
+      "Built a low-code app platform, reusable React UI components and a digital banking platform, and scaled the infrastructure behind them.",
+    achievements: headstraitAchievements,
   },
 ];
 

@@ -8,10 +8,10 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <Link href="#home" className="text-xl md:text-2xl font-bold text-primary">
-              Software Engineer <span className="text-foreground">·</span> <span className="text-accent">UI/UX & Front-End</span>
+              Software <span className="text-foreground">&</span> <span className="text-accent">Mobile Engineer</span>
             </Link>
             <p className="text-muted-foreground mt-2 text-sm">
-              Designing in Figma and building accessible, responsive interfaces in Flutter and React.
+              Building high-performance mobile, web, and full-stack solutions.
             </p>
           </div>
 

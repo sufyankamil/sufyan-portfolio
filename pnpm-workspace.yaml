@@ -1,6 +1,11 @@
+# Single-package repo. pnpm 9 (used by Cloudflare Pages) fails with
+# "packages field missing or empty" if this file has no packages list.
+packages:
+  - "."
+
 allowBuilds:
   sharp: true
 
-# pnpm 10 (used by Cloudflare Pages) reads this key instead of allowBuilds
+# pnpm 10 reads this key instead of allowBuilds
 onlyBuiltDependencies:
   - sharp

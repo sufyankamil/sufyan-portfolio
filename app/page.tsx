@@ -14,11 +14,12 @@ const personJsonLd = {
   "@type": "Person",
   name: "Sufyan Kamil",
   url: "https://sufyankamil.com",
-  jobTitle: "Software Engineer, UI/UX & Front-End",
+  jobTitle: "Senior Software Engineer",
   image: "https://sufyankamil.com/images/sufyan-kamil.webp",
+  worksFor: { "@type": "Organization", name: "Lauren Information Technologies" },
   address: { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" },
   alumniOf: { "@type": "CollegeOrUniversity", name: "University of Mumbai" },
-  knowsAbout: ["UI/UX Design", "Figma", "Design Systems", "Accessibility", "React Native", "Flutter", "Next.js", "React", "TypeScript", "Node.js", "Supabase", "Firebase"],
+  knowsAbout: ["React Native", "Flutter", "Next.js", "React", "TypeScript", "Node.js", "Supabase", "Firebase"],
   sameAs: ["https://github.com/sufyankamil", "https://www.linkedin.com/in/sufyankamil/", "https://flutter-mastery.hashnode.dev/"],
 };
 
